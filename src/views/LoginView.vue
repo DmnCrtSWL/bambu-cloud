@@ -23,7 +23,7 @@ const handleLogin = async () => {
     
     try {
         await auth.login(username.value, password.value);
-        router.push('/');
+        router.push('/admin');
     } catch (err) {
         error.value = err.message || 'Error al iniciar sesión';
     } finally {

@@ -43,7 +43,7 @@ const getIcon = (type) => {
     return Info;
 };
 
-const closeNotifications = () => router.push('/');
+const closeNotifications = () => router.push('/admin');
 </script>
 
 <template>

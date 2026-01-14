@@ -44,7 +44,7 @@ const auth = useAuthStore();
     </div>
 
     <nav class="nav-menu">
-      <router-link v-if="auth.isAdmin" to="/" class="nav-item" active-class="active">
+      <router-link v-if="auth.isAdmin" to="/admin" class="nav-item" active-class="active">
         <LayoutDashboard size="20" />
         <span v-if="!isCollapsed">Dashboard</span>
       </router-link>

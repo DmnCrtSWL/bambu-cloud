@@ -8,41 +8,6 @@ import { useAuthStore } from '../stores/auth'
 const host = window.location.host;
 const isMenuSubdomain = host.startsWith('menu.');
 
-const routes = [
-  // 1. Root Route (Conditional)
-  {
-    path: '/',
-    name: 'root',
-    component: isMenuSubdomain
-      ? () => import('../views/customer/MenuView.vue')
-      : AdminLayout,
-    children: isMenuSubdomain ? [] : [
-      // Admin Children (Dashboard, etc) - Only load these if NOT menu subdomain to avoid overhead/conflicts
-      {
-        path: '',
-        name: 'dashboard',
-        component: Dashboard
-      },
-      // ... (We need to move the rest of the children here or struct them differently)
-      // Actually, cleaner way: Define two top level routes structure and pick one.
-    ]
-  },
-  // 2. Explicit Menu Route (For Dev/Testing without subdomain)
-  {
-    path: '/menu',
-    name: 'menu-public',
-    component: () => import('../views/customer/MenuView.vue'),
-    meta: { public: true }
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue'),
-    meta: { public: true }
-  },
-];
-
-// Re-structuring routes to be cleaner:
 const adminChildren = [
   {
     path: '',
@@ -50,141 +15,164 @@ const adminChildren = [
     component: Dashboard
   },
   {
-    path: 'admin/notifications',
+    path: 'notifications',
     name: 'admin-notifications',
     component: () => import('../views/admin/NotificationsView.vue')
   },
   {
-    path: 'admin/users',
+    path: 'users',
     name: 'admin-users',
     component: () => import('../views/admin/UsersView.vue')
   },
   {
-    path: 'admin/users/new',
+    path: 'users/new',
     name: 'admin-users-new',
     component: () => import('../views/admin/UserFormView.vue')
   },
   {
-    path: 'admin/users/:id/edit',
+    path: 'users/:id/edit',
     name: 'admin-users-edit',
     component: () => import('../views/admin/UserFormView.vue')
   },
   {
-    path: 'admin/purchases',
+    path: 'purchases',
     name: 'admin-purchases',
     component: () => import('../views/admin/PurchasesView.vue')
   },
   {
-    path: 'admin/purchases/new',
+    path: 'purchases/new',
     name: 'admin-purchases-new',
     component: () => import('../views/admin/PurchaseFormView.vue')
   },
   {
-    path: 'admin/purchases/:id/breakdown',
+    path: 'purchases/:id/breakdown',
     name: 'admin-purchases-breakdown',
     component: () => import('../views/admin/PurchaseBreakdownView.vue')
   },
   {
-    path: 'admin/purchases/:id/edit',
+    path: 'purchases/:id/edit',
     name: 'admin-purchases-edit',
     component: () => import('../views/admin/PurchaseFormView.vue')
   },
   {
-    path: 'admin/fixed-expenses',
+    path: 'fixed-expenses',
     name: 'admin-fixed-expenses',
     component: () => import('../views/admin/FixedExpensesView.vue')
   },
   {
-    path: 'admin/fixed-expenses/new',
+    path: 'fixed-expenses/new',
     name: 'admin-fixed-expenses-new',
     component: () => import('../views/admin/FixedExpenseFormView.vue')
   },
   {
-    path: 'admin/fixed-expenses/:id/edit',
+    path: 'fixed-expenses/:id/edit',
     name: 'admin-fixed-expenses-edit',
     component: () => import('../views/admin/FixedExpenseFormView.vue')
   },
   {
-    path: 'admin/inventory',
+    path: 'inventory',
     name: 'admin-inventory',
     component: () => import('../views/admin/InventoryView.vue')
   },
   {
-    path: 'admin/customers',
+    path: 'customers',
     name: 'admin-customers',
     component: () => import('../views/admin/CustomersView.vue')
   },
   {
-    path: 'admin/recipes',
+    path: 'recipes',
     name: 'admin-recipes',
     component: () => import('../views/admin/RecipesView.vue')
   },
   {
-    path: 'admin/recipes/new',
+    path: 'recipes/new',
     name: 'admin-recipe-new',
     component: () => import('../views/admin/RecipeFormView.vue')
   },
   {
-    path: 'admin/recipes/:id/edit',
+    path: 'recipes/:id/edit',
     name: 'admin-recipe-edit',
     component: () => import('../views/admin/RecipeFormView.vue')
   },
   {
-    path: 'admin/menu/new',
+    path: 'menu/new',
     name: 'admin-menu-new',
     component: () => import('../views/admin/MenuFormView.vue')
   },
   {
-    path: 'admin/menu',
+    path: 'menu',
     name: 'admin-menu',
     component: () => import('../views/admin/MenuListView.vue')
   },
   {
-    path: 'admin/menu/:id/edit',
+    path: 'menu/:id/edit',
     name: 'admin-menu-edit',
     component: () => import('../views/admin/MenuFormView.vue')
   },
   {
-    path: 'admin/cxc',
+    path: 'cxc',
     name: 'admin-cxc',
     component: () => import('../views/admin/CXCView.vue')
   },
-  // POS Module
+];
+
+const posChildren = [
   {
-    path: 'pos/orders',
+    path: 'orders',
     name: 'pos-orders',
     component: () => import('../views/pos/OrdersView.vue')
   },
   {
-    path: 'pos/terminal',
+    path: 'terminal',
     name: 'pos-terminal',
     component: () => import('../views/pos/POSView.vue')
   },
   {
-    path: 'pos/reports',
+    path: 'reports',
     name: 'pos-reports',
     component: () => import('../views/pos/ReportsView.vue')
   },
   {
-    path: 'pos/history',
+    path: 'history',
     name: 'pos-history',
     component: () => import('../views/pos/HistoryView.vue')
   }
 ];
 
 const finalRoutes = [
+  // 1. Root Route -> Public Menu
+  {
+    path: '/',
+    name: 'root',
+    component: () => import('../views/customer/MenuView.vue'),
+    meta: { public: true }
+  },
+  // 2. Login
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue'),
     meta: { public: true }
   },
+  // 3. Admin Routes (Protected)
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: adminChildren
+    // Note: Dashboard is at /admin/
+  },
+  // 4. POS Routes (Protected, also use AdminLayout)
+  {
+    path: '/pos',
+    component: AdminLayout,
+    children: posChildren
+  },
+  // 5. Explicit Menu Route (Old link compatibility)
   {
     path: '/menu',
-    name: 'menu-dev',
-    component: () => import('../views/customer/MenuView.vue'),
-    meta: { public: true }
+    redirect: '/'
   },
+  // Public Pages
   {
     path: '/privacy-policy',
     name: 'privacy',
@@ -199,24 +187,6 @@ const finalRoutes = [
   }
 ];
 
-if (isMenuSubdomain) {
-  // If exploring menu.domain.com, root IS the menu
-  finalRoutes.push({
-    path: '/',
-    name: 'menu-root',
-    component: () => import('../views/customer/MenuView.vue'),
-    meta: { public: true }
-  });
-  // Admin routes are NOT added here, effectively blocking them on this subdomain
-} else {
-  // Normal Admin Domain
-  finalRoutes.push({
-    path: '/',
-    component: AdminLayout,
-    children: adminChildren
-  });
-}
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -226,14 +196,15 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const auth = useAuthStore()
 
-  // 1. Redirect to login if not authenticated
+  // 1. Redirect to login if not authenticated and trying to access protected route
   if (!to.meta.public && !auth.isAuthenticated) {
     return next({ name: 'login' });
   }
 
-  // 2. Redirect to dashboard if logged in and visiting login
+  // 2. Redirect to Dashboard if logged in and visiting login or root (optional, but user wants root as menu)
+  // If user visits /login and is auth -> go to /admin (Dashboard)
   if (to.name === 'login' && auth.isAuthenticated) {
-    return next({ name: 'dashboard' });
+    return next('/admin');
   }
 
   // 3. RBAC Logic
@@ -241,12 +212,12 @@ router.beforeEach((to, from, next) => {
     const role = auth.user?.role;
     const path = to.path;
 
-    // --- DASHBOARD ACCESS ---
+    // --- DASHBOARD ACCESS (Now at /admin or /admin/) ---
     // Only Admin can see Dashboard
     if (to.name === 'dashboard' && role !== 'Administrador') {
       // Redirect to a safe default page
       if (role === 'Operativo') return next('/pos/terminal');
-      if (role === 'Gerencia') return next('/pos/terminal'); // Or purchases
+      if (role === 'Gerencia') return next('/pos/terminal'); 
     }
 
     // --- OPERATIVO RESTRICTIONS ---
@@ -260,7 +231,6 @@ router.beforeEach((to, from, next) => {
 
     // --- GERENCIA RESTRICTIONS ---
     if (role === 'Gerencia') {
-      // Allowed: /pos/*, /admin/inventory, /admin/purchases, /admin/customers
       // Blocked: /admin/users, /admin/fixed-expenses, /admin/recipes
       const blockedPrefixes = [
         '/admin/users',
