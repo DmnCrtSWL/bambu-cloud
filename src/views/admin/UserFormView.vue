@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { Save, X, ArrowLeft, User, Mail, Shield, Lock } from 'lucide-vue-next';
+import { authFetch } from '../../utils/authFetch';
 
 const router = useRouter();
 const route = useRoute();
@@ -67,7 +68,7 @@ const saveUser = async () => {
             delete payload.password;
         }
 
-        const res = await fetch(url, {
+        const res = await authFetch(url, {
             method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
