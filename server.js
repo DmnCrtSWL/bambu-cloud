@@ -74,11 +74,18 @@ const logToFile = (msg) => {
 };
 
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://localhost:${PORT} (v2 - Fixed Notifs)`);
-    console.log(`[INFO] Server starting with T12:00:00 fix safe-guard.`);
-});
+// Export app for Serverless
+export default app;
+
+// Only listen if run directly
+import { fileURLToPath } from 'url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Server running on http://localhost:${PORT} (v2 - Fixed Notifs)`);
+        console.log(`[INFO] Server starting with T12:00:00 fix safe-guard.`);
+    });
+}
 // GET /api/sales - History View (PROTECTED)
 app.get('/api/sales', verifyToken, async (req, res) => {
     try {
