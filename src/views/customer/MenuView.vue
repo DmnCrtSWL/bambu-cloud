@@ -574,7 +574,7 @@ const getIconComponent = (item) => {
         
         <div class="header-actions">
             <!-- 1. Admin Switch -->
-            <router-link v-if="isAdmin" to="/" class="admin-dash-icon" title="Ir al Panel de Administración">
+            <router-link v-if="isAdmin" to="/admin" class="admin-dash-icon" title="Ir al Panel de Administración">
                 <ArrowLeftRight :size="24" />
             </router-link>
 
