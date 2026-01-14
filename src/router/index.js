@@ -216,7 +216,7 @@ router.beforeEach((to, from, next) => {
     // Only Admin can see Dashboard
     if (to.name === 'dashboard' && role !== 'Administrador') {
       // Redirect to a safe default page
-      if (role === 'Operativo') return next('/pos/terminal');
+      if (role === 'Operativo') return next('/pos/orders');
       if (role === 'Gerencia') return next('/pos/terminal'); 
     }
 
@@ -225,7 +225,7 @@ router.beforeEach((to, from, next) => {
       // Allowed: /pos/*, /admin/inventory
       // Blocked: Everything else in /admin/
       if (path.startsWith('/admin/') && !path.startsWith('/admin/inventory')) {
-        return next('/pos/terminal');
+        return next('/pos/orders');
       }
     }
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { authFetch } from '../../utils/authFetch';
 import { 
   Calendar, 
@@ -32,12 +32,20 @@ const reportData = ref({
   total: 0
 });
 const loading = ref(true);
-const cashierName = ref('Administrador');
 
 // Advanced Settings State
 const showSettingsMenu = ref(false);
 const usersList = ref([]);
-const selectedUser = ref('all');
+// Default to current user if not admin, else 'all'
+const selectedUser = ref(auth.isAdmin ? 'all' : auth.user?.id);
+
+const cashierName = computed(() => {
+    if (selectedUser.value === 'all') return 'Varios / Todos';
+    if (selectedUser.value == auth.user?.id) return auth.user?.name;
+    const found = usersList.value.find(u => u.id == selectedUser.value);
+    return found ? found.name : 'Desconocido';
+});
+
 const detailedReport = ref(null);
 const filters = ref({
   sales: false,
@@ -51,7 +59,7 @@ const filters = ref({
 const fetchReport = async () => {
   loading.value = true;
   try {
-    const res = await authFetch(`/api/reports/daily?date=${selectedDate.value}`);
+    const res = await authFetch(`/api/reports/daily?date=${selectedDate.value}&userId=${selectedUser.value}`);
     if (!res.ok) throw new Error('Failed to fetch report');
     reportData.value = await res.json();
     

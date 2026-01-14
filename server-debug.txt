@@ -707,3 +707,7 @@
 [2026-01-14T20:38:33.746Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-14"}
 [2026-01-14T20:38:42.910Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
 [2026-01-14T20:39:01.920Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:52:30.157Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:53:09.820Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:54:46.564Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:58:29.560Z] [GET /api/customers] CXC Items Found: 0

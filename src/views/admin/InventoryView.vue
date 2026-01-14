@@ -1,13 +1,17 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { authFetch } from '../../utils/authFetch';
-import { Printer, Sparkles, ChevronLeft, ChevronRight } from 'lucide-vue-next';
+import { Printer, Sparkles, ChevronLeft, ChevronRight, ArrowUp, ArrowDown } from 'lucide-vue-next';
 
 
 
 const inventory = ref([]);
 const loading = ref(true);
 const filterType = ref('Todos');
+
+// Sorting State
+const sortKey = ref('product');
+const sortOrder = ref('asc'); // 'asc' or 'desc'
 
 const fetchInventory = async () => {
     loading.value = true;
@@ -44,18 +48,51 @@ const getStockStatus = (quantity) => {
     return { label: 'Suficiente', class: 'status-success' };
 };
 
-const filteredInventory = computed(() => {
-    if (filterType.value === 'Todos') return inventory.value;
-    return inventory.value.filter(item => item.type === filterType.value);
+const sortedInventory = computed(() => {
+    let items = inventory.value;
+    
+    // 1. Filter
+    if (filterType.value !== 'Todos') {
+        items = items.filter(item => item.type === filterType.value);
+    }
+
+    // 2. Sort
+    return [...items].sort((a, b) => {
+        let valA = a[sortKey.value];
+        let valB = b[sortKey.value];
+
+        // Specific handling for numbers (Stock)
+        if (sortKey.value === 'totalQuantity') {
+            valA = Number(valA);
+            valB = Number(valB);
+        }
+        
+        // Handle nulls
+        if (valA == null) valA = '';
+        if (valB == null) valB = '';
+
+        if (valA < valB) return sortOrder.value === 'asc' ? -1 : 1;
+        if (valA > valB) return sortOrder.value === 'asc' ? 1 : -1;
+        return 0;
+    });
 });
+
+const sortBy = (key) => {
+    if (sortKey.value === key) {
+        sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
+    } else {
+        sortKey.value = key;
+        sortOrder.value = 'asc';
+    }
+};
 
 // Pagination
 const itemsPerPage = 10;
 const currentPage = ref(1);
-const totalPages = computed(() => Math.ceil(filteredInventory.value.length / itemsPerPage));
+const totalPages = computed(() => Math.ceil(sortedInventory.value.length / itemsPerPage));
 const paginatedInventory = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage;
-    return filteredInventory.value.slice(start, start + itemsPerPage);
+    return sortedInventory.value.slice(start, start + itemsPerPage);
 });
 
 const currency = (val) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(val);
@@ -141,13 +178,37 @@ const handleSmartList = () => {
         <table class="data-table">
             <thead>
             <tr>
-                <th>Nombre del Producto</th>
-                <th>Tipo</th>
+                <th @click="sortBy('product')" class="sortable">
+                    <div class="th-content">
+                        Nombre del Producto
+                        <span v-if="sortKey === 'product'">
+                            <ArrowUp v-if="sortOrder === 'asc'" size="14" />
+                            <ArrowDown v-else size="14" />
+                        </span>
+                    </div>
+                </th>
+                <th @click="sortBy('type')" class="sortable">
+                    <div class="th-content">
+                        Tipo
+                        <span v-if="sortKey === 'type'">
+                            <ArrowUp v-if="sortOrder === 'asc'" size="14" />
+                            <ArrowDown v-else size="14" />
+                        </span>
+                    </div>
+                </th>
                 <th>Cantidad</th>
                 <th>U/M</th>
                 <th>Costo Promedio</th>
                 <th>Última Compra</th>
-                <th>Stock</th>
+                <th @click="sortBy('totalQuantity')" class="sortable">
+                    <div class="th-content">
+                        Stock
+                        <span v-if="sortKey === 'totalQuantity'">
+                            <ArrowUp v-if="sortOrder === 'asc'" size="14" />
+                            <ArrowDown v-else size="14" />
+                        </span>
+                    </div>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -296,6 +357,21 @@ const handleSmartList = () => {
 
 .data-table tr:last-child td {
   border-bottom: none;
+}
+
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sortable:hover {
+    background-color: #f1f5f9;
+}
+
+.th-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .text-center { text-align: center; }

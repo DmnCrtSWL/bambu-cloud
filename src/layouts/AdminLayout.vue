@@ -90,6 +90,11 @@ const handleLogout = () => {
 const handleUnlock = () => {
     isLocked.value = false;
     lastActivity = Date.now(); // Reset timer
+    
+    // Redirect Operativo to Orders on unlock
+    if (auth.user?.role === 'Operativo') {
+        router.push('/pos/orders');
+    }
 };
 
 // Update activity timestamp

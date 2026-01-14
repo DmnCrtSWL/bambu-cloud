@@ -1499,13 +1499,16 @@ app.delete('/api/users/:id', verifyToken, async (req, res) => {
 
 app.get('/api/reports/daily', verifyToken, async (req, res) => {
     try {
-        const { date } = req.query; // Expecting YYYY-MM-DD
+        const { date, userId } = req.query; // Expecting YYYY-MM-DD
         const targetDate = date ? new Date(date + 'T00:00:00') : new Date();
 
         const start = new Date(targetDate);
         start.setHours(0, 0, 0, 0);
         const end = new Date(targetDate);
         end.setHours(23, 59, 59, 999);
+
+        // Filter by user if provided
+        const userFilter = userId && userId !== 'all' ? eq(sales.userId, parseInt(userId)) : undefined;
 
         const result = await db.select({
             paymentMethod: sales.paymentMethod,
@@ -1515,7 +1518,8 @@ app.get('/api/reports/daily', verifyToken, async (req, res) => {
             .where(
                 and(
                     isNull(sales.deletedAt),
-                    between(sales.createdAt, start, end)
+                    between(sales.createdAt, start, end),
+                    userFilter
                 )
             )
             .groupBy(sales.paymentMethod);
