@@ -114,6 +114,18 @@ const adminChildren = [
     name: 'admin-cxc',
     component: () => import('../views/admin/CXCView.vue')
   },
+  {
+    path: 'patients',
+    name: 'admin-patients',
+    component: () => import('../views/admin/WorkingView.vue'),
+    props: { title: 'Pacientes' }
+  },
+  {
+    path: 'loyalty',
+    name: 'admin-loyalty',
+    component: () => import('../views/admin/WorkingView.vue'),
+    props: { title: 'Fidelidad' }
+  },
 ];
 
 const posChildren = [
@@ -222,10 +234,20 @@ router.beforeEach((to, from, next) => {
 
     // --- OPERATIVO RESTRICTIONS ---
     if (role === 'Operativo') {
-      // Allowed: /pos/*, /admin/inventory
-      // Blocked: Everything else in /admin/
-      if (path.startsWith('/admin/') && !path.startsWith('/admin/inventory')) {
-        return next('/pos/orders');
+      // Allowed: /pos/*, /admin/inventory, /admin/purchases, /admin/patients, /admin/loyalty
+      const allowedAdminPrefixes = [
+        '/admin/inventory',
+        '/admin/purchases',
+        '/admin/patients',
+        '/admin/loyalty'
+      ];
+
+      // If it's an admin path...
+      if (path.startsWith('/admin/')) {
+        // ...and NOT one of the allowed prefixes
+        if (!allowedAdminPrefixes.some(prefix => path.startsWith(prefix))) {
+           return next('/pos/orders');
+        }
       }
     }
 

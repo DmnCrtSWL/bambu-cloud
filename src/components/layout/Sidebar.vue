@@ -15,7 +15,9 @@ import {
   History,
   UserCog,
   BookOpen,
-  X
+  X,
+  Heart,
+  Award
 } from 'lucide-vue-next';
 import { useAuthStore } from '../../stores/auth';
 
@@ -53,7 +55,7 @@ const auth = useAuthStore();
         <div v-if="!isCollapsed" class="group-label">ADMINISTRACIÓN</div>
         <div v-else class="group-divider"></div>
         
-        <router-link v-if="auth.isAdmin || auth.isGerencia" to="/admin/purchases" class="nav-item" active-class="active">
+        <router-link v-if="auth.isAdmin || auth.isGerencia || auth.isOperativo" to="/admin/purchases" class="nav-item" active-class="active">
           <ShoppingCart size="20" />
           <span v-if="!isCollapsed">Compras</span>
         </router-link>
@@ -66,6 +68,16 @@ const auth = useAuthStore();
         <router-link to="/admin/inventory" class="nav-item" active-class="active">
           <Package size="20" />
           <span v-if="!isCollapsed">Inventario</span>
+        </router-link>
+
+        <router-link to="/admin/patients" class="nav-item" active-class="active">
+          <Heart size="20" />
+          <span v-if="!isCollapsed">Pacientes</span>
+        </router-link>
+
+        <router-link to="/admin/loyalty" class="nav-item" active-class="active">
+          <Award size="20" />
+          <span v-if="!isCollapsed">Fidelidad</span>
         </router-link>
 
         <router-link v-if="auth.isAdmin" to="/admin/recipes" class="nav-item" active-class="active">
