@@ -1,0 +1,703 @@
+[2025-12-29T12:10:08.682Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:10:08.682Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:10:45.635Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:10:45.636Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:10:50.013Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:10:50.013Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:12:20.584Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:12:20.584Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:13:33.366Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:13:33.366Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:13:37.014Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:13:37.014Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:14:15.604Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:16:01.846Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:16:01.847Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:18:39.196Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:18:39.196Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:20:10.721Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:20:10.721Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:21:43.165Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:21:58.011Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:23:57.763Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:33:56.403Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:35:05.498Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:35:05.499Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:35:11.635Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:35:11.635Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:35:28.421Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:35:28.421Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:36:12.999Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:36:13.000Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:38:46.871Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:38:46.871Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:42:48.226Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:42:48.227Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:49:33.117Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:49:33.117Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:49:40.722Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:49:40.723Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:49:45.481Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T12:49:49.146Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:49:49.147Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:53:24.185Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:53:24.185Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T12:55:57.002Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T12:55:57.002Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:01:22.126Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:01:22.126Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:02:23.361Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:02:23.361Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:05:00.657Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:05:00.658Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:05:15.239Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:05:15.239Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:06:01.171Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:06:01.171Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:06:35.242Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:06:35.243Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:06:41.323Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:06:41.323Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:06:47.435Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:06:47.435Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:06:58.217Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:06:58.218Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:07:09.253Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:07:09.254Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:08:09.089Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:11:35.127Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:11:35.127Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:11:54.279Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:11:54.279Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:12:06.083Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:12:06.083Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:13:15.152Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:13:15.153Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:13:19.942Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:13:19.942Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:13:45.004Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:13:45.004Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:14:38.412Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:16:17.710Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:16:34.725Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:16:52.732Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:17:16.964Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:17:16.965Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:18:31.301Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:18:31.302Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:19:06.422Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:19:06.423Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:19:17.729Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:19:17.730Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:19:31.093Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:19:31.094Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:21:37.746Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:21:37.747Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:21:45.822Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:21:45.823Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:23:02.650Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:23:02.651Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:23:04.886Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Alfredo","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":19}}
+[2025-12-29T13:23:04.887Z] [POST /api/sales] FOUND CXC Payment for ID: 19
+[2025-12-29T13:23:04.978Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Alfredo","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":18}}
+[2025-12-29T13:23:04.978Z] [POST /api/sales] FOUND CXC Payment for ID: 18
+[2025-12-29T13:23:21.909Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:23:21.909Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:23:25.878Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Karol","quantity":1,"unitPrice":44,"total":44,"type":"cxc_payment","metadata":{"cxcId":14}}
+[2025-12-29T13:23:25.878Z] [POST /api/sales] FOUND CXC Payment for ID: 14
+[2025-12-29T13:23:25.936Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Karol Muro","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":13}}
+[2025-12-29T13:23:25.936Z] [POST /api/sales] FOUND CXC Payment for ID: 13
+[2025-12-29T13:23:25.995Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Karol Muri","quantity":1,"unitPrice":300,"total":300,"type":"cxc_payment","metadata":{"cxcId":9}}
+[2025-12-29T13:23:25.995Z] [POST /api/sales] FOUND CXC Payment for ID: 9
+[2025-12-29T13:23:26.053Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Karol","quantity":1,"unitPrice":300,"total":300,"type":"cxc_payment","metadata":{"cxcId":7}}
+[2025-12-29T13:23:26.053Z] [POST /api/sales] FOUND CXC Payment for ID: 7
+[2025-12-29T13:23:26.111Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Karol Murto","quantity":1,"unitPrice":44,"total":44,"type":"cxc_payment","metadata":{"cxcId":4}}
+[2025-12-29T13:23:26.112Z] [POST /api/sales] FOUND CXC Payment for ID: 4
+[2025-12-29T13:23:35.815Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:23:35.816Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:23:39.262Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":12}}
+[2025-12-29T13:23:39.262Z] [POST /api/sales] FOUND CXC Payment for ID: 12
+[2025-12-29T13:23:39.322Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":10}}
+[2025-12-29T13:23:39.322Z] [POST /api/sales] FOUND CXC Payment for ID: 10
+[2025-12-29T13:23:39.381Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":8}}
+[2025-12-29T13:23:39.382Z] [POST /api/sales] FOUND CXC Payment for ID: 8
+[2025-12-29T13:23:39.441Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":6}}
+[2025-12-29T13:23:39.441Z] [POST /api/sales] FOUND CXC Payment for ID: 6
+[2025-12-29T13:23:39.506Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":3}}
+[2025-12-29T13:23:39.507Z] [POST /api/sales] FOUND CXC Payment for ID: 3
+[2025-12-29T13:23:52.090Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:23:52.090Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:24:00.794Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:24:00.795Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:24:22.549Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:24:22.549Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:24:27.057Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:24:27.057Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:26:55.079Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:26:55.080Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:26:57.741Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:26:57.741Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:26:59.481Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:26:59.482Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:13.865Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:13.865Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:22.465Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:22.466Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:24.934Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:24.935Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:27.416Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:27.416Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:30.068Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:30.068Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:27:32.913Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:27:32.913Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:29:52.413Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:29:52.413Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:29:57.361Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:29:57.362Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:30:01.091Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:30:01.091Z] [GET /api/customers] Sample CXC Item: {"phone":"5555555","product":"Quesadillas - Grande, Deslactosada"}
+[2025-12-29T13:30:10.035Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Maricruz","quantity":1,"unitPrice":44,"total":44,"type":"cxc_payment","metadata":{"cxcId":17}}
+[2025-12-29T13:30:10.035Z] [POST /api/sales] FOUND CXC Payment for ID: 17
+[2025-12-29T13:30:10.097Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Roberto Rodriguez","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":16}}
+[2025-12-29T13:30:10.098Z] [POST /api/sales] FOUND CXC Payment for ID: 16
+[2025-12-29T13:30:10.160Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Carlos Fuentes","quantity":1,"unitPrice":76,"total":76,"type":"cxc_payment","metadata":{"cxcId":15}}
+[2025-12-29T13:30:10.161Z] [POST /api/sales] FOUND CXC Payment for ID: 15
+[2025-12-29T13:30:10.223Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Erika Sanchez","quantity":1,"unitPrice":44,"total":44,"type":"cxc_payment","metadata":{"cxcId":11}}
+[2025-12-29T13:30:10.223Z] [POST /api/sales] FOUND CXC Payment for ID: 11
+[2025-12-29T13:30:10.285Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Mitzy Muro","quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":5}}
+[2025-12-29T13:30:10.285Z] [POST /api/sales] FOUND CXC Payment for ID: 5
+[2025-12-29T13:30:10.348Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Carlos Fuentes","quantity":1,"unitPrice":54,"total":54,"type":"cxc_payment","metadata":{"cxcId":1}}
+[2025-12-29T13:30:10.348Z] [POST /api/sales] FOUND CXC Payment for ID: 1
+[2025-12-29T13:32:33.421Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:44:18.650Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:46:32.334Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T13:52:30.652Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T13:52:30.653Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:00:33.457Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:00:33.457Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:00:38.442Z] [POST /api/sales] Item: {"productName":"Quesadillas","quantity":1,"unitPrice":49,"total":49}
+[2025-12-29T14:01:38.745Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:01:38.746Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:04:02.560Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T14:20:13.465Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:20:13.466Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:20:18.954Z] [POST /api/sales] Item: {"productName":"Quesadillas - Grande, Normal","quantity":1,"unitPrice":49,"total":49}
+[2025-12-29T14:25:23.394Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:25:23.394Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:25:40.154Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:25:40.155Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T14:26:10.579Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T14:26:10.580Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T15:05:45.251Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T15:05:45.252Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T15:05:48.115Z] [GET /api/customers] CXC Items Found: 19
+[2025-12-29T15:05:48.116Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T15:06:02.726Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=49
+[2025-12-29T15:06:03.581Z] [POST /api/cxc] Transaction completed successfully
+[2025-12-29T15:06:08.574Z] [GET /api/customers] CXC Items Found: 20
+[2025-12-29T15:06:08.574Z] [GET /api/customers] Sample CXC Item: {"phone":"4433443344","product":"Quesadillas - Grande, Normal"}
+[2025-12-29T15:06:20.613Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:22:33.638Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:27:16.896Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:27:24.505Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:27:34.216Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:32:15.974Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:32:30.726Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:35:16.519Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:36:19.317Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:42:29.204Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:42:32.158Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":4,"unitPrice":35,"total":140}
+[2025-12-29T15:42:32.348Z] [POST /api/sales] Item: {"productName":"Omelette de Queso y Champiñones","quantity":5,"unitPrice":105,"total":525}
+[2025-12-29T15:42:32.411Z] [POST /api/sales] Item: {"productName":"Chapata de Atún","quantity":7,"unitPrice":95,"total":665}
+[2025-12-29T15:45:15.674Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:45:36.462Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:45:41.933Z] [POST /api/sales] Item: {"productName":"Omelette de Queso y Champiñones","quantity":1,"unitPrice":105,"total":105}
+[2025-12-29T15:46:04.575Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T15:46:21.639Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T15:46:31.712Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:11:12.004Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:11:16.637Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:11:20.383Z] [POST /api/sales] Item: {"productName":"Omelette de Queso y Champiñones","quantity":1,"unitPrice":105,"total":105}
+[2025-12-29T16:12:14.425Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T16:12:41.159Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:13:09.851Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:14:31.739Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:14:35.563Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":1,"unitPrice":35,"total":35}
+[2025-12-29T16:14:35.890Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":1,"unitPrice":35,"total":35}
+[2025-12-29T16:15:35.966Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:15:43.103Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:15:47.514Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":1,"unitPrice":35,"total":35}
+[2025-12-29T16:16:10.432Z] [GET /api/customers] CXC Items Found: 0
+[2025-12-29T16:16:28.719Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=35
+[2025-12-29T16:16:29.534Z] [POST /api/cxc] Transaction completed successfully
+[2025-12-29T16:16:40.674Z] [GET /api/customers] CXC Items Found: 1
+[2025-12-29T16:16:40.675Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:16:44.389Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":35,"total":35,"type":"cxc_payment","metadata":{"cxcId":1}}
+[2025-12-29T16:16:44.514Z] [POST /api/sales] FOUND CXC Payment for ID: 1
+[2025-12-29T16:17:05.712Z] [GET /api/customers] CXC Items Found: 1
+[2025-12-29T16:17:05.712Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:17:10.683Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":1,"unitPrice":35,"total":35}
+[2025-12-29T16:17:20.731Z] [GET /api/customers] CXC Items Found: 1
+[2025-12-29T16:17:20.731Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:17:32.674Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=35
+[2025-12-29T16:17:33.369Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=35
+[2025-12-29T16:17:33.506Z] [POST /api/cxc] Transaction completed successfully
+[2025-12-29T16:17:34.181Z] [POST /api/cxc] Transaction completed successfully
+[2025-12-29T16:17:50.171Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:17:50.172Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:17:52.396Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":35,"total":35,"type":"cxc_payment","metadata":{"cxcId":3}}
+[2025-12-29T16:17:52.519Z] [POST /api/sales] FOUND CXC Payment for ID: 3
+[2025-12-29T16:17:56.540Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:17:56.540Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:17:58.857Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":35,"total":35,"type":"cxc_payment","metadata":{"cxcId":2}}
+[2025-12-29T16:17:58.981Z] [POST /api/sales] FOUND CXC Payment for ID: 2
+[2025-12-29T16:18:21.783Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:18:21.784Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:22:26.987Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:22:26.988Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:22:58.155Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:22:58.156Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:23:13.132Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:23:13.133Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:23:22.609Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":4,"unitPrice":35,"total":140}
+[2025-12-29T16:23:27.197Z] [GET /api/customers] CXC Items Found: 3
+[2025-12-29T16:23:27.198Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:23:40.648Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=140
+[2025-12-29T16:23:41.648Z] [POST /api/cxc] Transaction completed successfully
+[2025-12-29T16:23:45.084Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:23:45.084Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:23:52.741Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:23:52.741Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:23:58.316Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","quantity":1,"unitPrice":140,"total":140,"type":"cxc_payment","metadata":{"cxcId":4}}
+[2025-12-29T16:23:58.316Z] [POST /api/sales] FOUND CXC Payment for ID: 4
+[2025-12-29T16:25:26.867Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:25:26.868Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:27:56.148Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:27:56.148Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:34:23.916Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:34:23.917Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:35:41.338Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:35:41.338Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:36:20.375Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:36:20.376Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:50:23.976Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:50:23.977Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:50:47.437Z] [POST /api/sales] Item: {"productName":"Coca Cola","quantity":1,"unitPrice":35,"total":35}
+[2025-12-29T16:50:55.722Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:50:55.723Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:51:08.273Z] [POST /api/sales] Item: {"productName":"Chapata de Atún","quantity":1,"unitPrice":95,"total":95}
+[2025-12-29T16:51:08.847Z] [POST /api/sales] Item: {"productName":"Chapata de Atún","quantity":1,"unitPrice":95,"total":95}
+[2025-12-29T16:51:11.651Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:51:11.652Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:51:41.264Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:51:41.264Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T16:51:44.631Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T16:51:44.632Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T18:27:29.789Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T18:27:29.789Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T18:50:21.416Z] [GET /api/tickets] Query: {"today":"true"}
+[2025-12-29T19:40:19.175Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T19:40:19.176Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T20:09:53.176Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T20:09:53.176Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T20:33:31.268Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T20:33:31.269Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T20:35:18.070Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T20:35:18.071Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T20:37:14.954Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T20:37:14.955Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:03:36.228Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:03:36.229Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:03:42.279Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:03:42.280Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:13:57.237Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:13:57.238Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:14:24.090Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:14:24.091Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:18:35.382Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:18:35.383Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:23:10.229Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:23:10.230Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:23:10.235Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:23:10.235Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:23:10.431Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:23:10.431Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:23:27.986Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:23:27.986Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:24:18.591Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:24:18.591Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:31:08.934Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:31:08.935Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2025-12-29T21:31:25.441Z] [GET /api/customers] CXC Items Found: 4
+[2025-12-29T21:31:25.441Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2026-01-12T13:39:20.102Z] [GET /api/customers] CXC Items Found: 4
+[2026-01-12T13:39:20.103Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Coca Cola"}
+[2026-01-12T13:48:14.881Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-12T13:52:51.435Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-12T21:38:21.138Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-12T22:24:47.436Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-12T22:47:55.961Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T01:15:24.224Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:18:51.877Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:19:03.461Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:21:53.395Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:22:00.046Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:22:03.129Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:22:39.251Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:23:16.252Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:23:59.521Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:24:03.462Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:24:07.687Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:24:11.391Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:26:11.443Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:27:19.898Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:31:24.480Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:31:36.986Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:31:42.316Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:32:00.354Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:32:05.949Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T01:36:42.010Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:37:01.082Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:53:22.527Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T01:53:29.589Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:24:22.283Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:24:29.561Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:24:36.002Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:25:20.391Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:25:22.092Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:25:23.299Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:25:27.145Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:25:28.177Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:26:24.587Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:26:31.037Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:26:36.872Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:27:49.794Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:27:52.905Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:27:54.501Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:27:54.789Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:27:55.437Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:27:55.763Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:27:56.516Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:27:58.238Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:27:59.002Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:28:03.867Z] [GET /api/tickets] Query: {"from":"2025-10-02","to":"2026-01-13"}
+[2026-01-13T02:28:05.478Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:28:07.052Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:28:16.378Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:28:19.890Z] [GET /api/tickets] Query: {"from":"2025-10-02","to":"2026-01-13"}
+[2026-01-13T02:28:41.661Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:28:45.138Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:28:48.994Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:28:53.529Z] [GET /api/tickets] Query: {"from":"","to":""}
+[2026-01-13T02:28:53.984Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-01"}
+[2026-01-13T02:28:54.046Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:28:54.470Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:28:56.130Z] [GET /api/tickets] Query: {"from":"","to":""}
+[2026-01-13T02:28:56.250Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:28:59.111Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:29:00.035Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:29:03.311Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:29:21.644Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:29:28.852Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:29:30.604Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:29:31.182Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:29:33.310Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:29:35.585Z] [GET /api/tickets] Query: {"from":"2026-10-13","to":"2026-10-13"}
+[2026-01-13T02:29:37.008Z] [GET /api/tickets] Query: {"from":"","to":""}
+[2026-01-13T02:29:37.137Z] [GET /api/tickets] Query: {"from":"2026-10-01","to":"2026-10-01"}
+[2026-01-13T02:29:40.040Z] [GET /api/tickets] Query: {"from":"","to":""}
+[2026-01-13T02:29:40.184Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-01"}
+[2026-01-13T02:29:42.561Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:29:46.520Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:29:49.006Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:29:52.125Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:29:54.389Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:29:55.714Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:30:04.376Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:30:09.196Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:30:10.512Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:30:32.446Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:30:34.569Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:30:37.809Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:30:41.526Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:32:05.581Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:32:07.594Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:43:41.523Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-13T02:43:43.248Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:43:54.719Z] [GET /api/tickets] Query: {"from":"2026-12-10","to":"2026-12-10"}
+[2026-01-13T02:43:57.303Z] [GET /api/tickets] Query: {"from":"2026-12-10","to":"2026-12-10"}
+[2026-01-13T02:43:57.767Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:44:01.719Z] [GET /api/tickets] Query: {"from":"2026-12-10","to":"2026-12-10"}
+[2026-01-13T02:44:09.129Z] [GET /api/tickets] Query: {"from":"2026-01-10","to":"2026-01-10"}
+[2026-01-13T02:44:12.336Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:44:19.063Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:44:22.887Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:44:25.361Z] [GET /api/tickets] Query: {"from":"2025-12-02","to":"2025-12-31"}
+[2026-01-13T02:44:29.141Z] [GET /api/tickets] Query: {"from":"2025-10-02","to":"2026-01-13"}
+[2026-01-13T02:44:31.673Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:44:35.161Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:44:42.229Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:44:55.677Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:45:01.644Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:45:03.417Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:45:07.513Z] [GET /api/tickets] Query: {"from":"2025-12-02","to":"2025-12-31"}
+[2026-01-13T02:45:32.481Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:45:43.912Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T02:45:46.764Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:46:30.655Z] [GET /api/tickets] Query: {"from":"2025-12-02","to":"2025-12-31"}
+[2026-01-13T02:46:32.448Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:47:20.940Z] [GET /api/tickets] Query: {"from":"2026-01-12","to":"2026-01-12"}
+[2026-01-13T02:50:30.341Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T02:50:32.156Z] [GET /api/tickets] Query: {"from":"2025-12-14","to":"2026-01-13"}
+[2026-01-13T02:50:34.442Z] [GET /api/tickets] Query: {"from":"2026-01-02","to":"2026-01-13"}
+[2026-01-13T03:01:05.590Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T03:03:19.164Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T03:03:34.238Z] [POST /api/sales] Item: {"productName":"Chapata de Pechuga de Pavo","quantity":1,"unitPrice":129,"total":129}
+[2026-01-13T03:04:21.324Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T03:05:02.569Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T03:05:35.666Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T14:09:18.722Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:09:23.306Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-13"}
+[2026-01-13T14:09:24.490Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:09:47.653Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:10:45.747Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:11:03.178Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:11:07.964Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:11:24.238Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:11:57.224Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:12:30.519Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:12:47.220Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:13:04.835Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T14:22:17.890Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T14:22:35.864Z] [POST /api/sales] Item: {"productName":"Latte","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T14:23:11.963Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T14:25:28.778Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T14:25:29.205Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T14:26:42.150Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T14:26:48.845Z] [POST /api/sales] Item: {"productName":"Latte","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T14:49:28.973Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T14:49:41.413Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T14:49:53.987Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T14:59:56.484Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T15:00:00.204Z] [POST /api/sales] Item: {"productName":"Latte","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T15:53:00.305Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T15:54:56.123Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T15:54:58.221Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T15:55:01.558Z] [POST /api/sales] Item: {"productName":"Latte","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T16:08:56.935Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:09:09.315Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:09:26.690Z] [POST /api/sales] Item: {"productName":"Latte","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:13:36.902Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:13:50.850Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:13:52.827Z] [POST /api/sales] Item: {"productName":"Latte","baseName":"Latte","options":["12 Oz","Almendras"],"quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:14:11.889Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T16:14:18.494Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:17:46.999Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:18:17.245Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:18:17.246Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:18:28.983Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:18:29.083Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:18:43.779Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:21:12.803Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:22:33.919Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:31:57.509Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:32:00.776Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:32:00.902Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T16:42:53.821Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:46:09.320Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:48:17.472Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:48:20.310Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:49:18.097Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:49:22.977Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T16:49:23.106Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:49:57.623Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:50:54.402Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:51:00.332Z] [POST /api/sales] Item: {"productName":"Latte","baseName":"Latte","options":["12 Oz","Entera"],"quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T16:51:00.530Z] [POST /api/sales] Item: {"productName":"Latte","baseName":"Latte","options":["12 Oz","Almendras"],"quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:51:04.851Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:54:28.952Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:55:30.975Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:56:15.921Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:56:30.814Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T16:56:46.381Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T16:56:46.506Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T16:56:53.281Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:00:22.897Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:00:38.637Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T17:02:02.294Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:02:03.853Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:04:23.605Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:04:30.789Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","baseName":"Latte","options":["12 Oz","Almendras"],"quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T17:04:42.036Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:05:06.741Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Entera","baseName":"Latte","options":["12 Oz","Entera"],"quantity":1,"unitPrice":49,"total":49}
+[2026-01-13T17:05:06.932Z] [POST /api/sales] Item: {"productName":"Latte - 12 Oz, Almendras","baseName":"Latte","options":["12 Oz","Almendras"],"quantity":1,"unitPrice":54,"total":54}
+[2026-01-13T17:05:19.490Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:08:03.831Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T17:08:32.626Z] [POST /api/cxc] Received: Name=JR, Phone=1234567897, Total=129
+[2026-01-13T17:08:33.693Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T17:09:00.097Z] [GET /api/customers] CXC Items Found: 1
+[2026-01-13T17:09:00.098Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:09:09.940Z] [GET /api/customers] CXC Items Found: 1
+[2026-01-13T17:09:09.941Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:09:19.063Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=49
+[2026-01-13T17:09:19.635Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T17:09:40.327Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:09:40.328Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:09:45.340Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:09:45.341Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:09:57.425Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:09:57.426Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:09:59.921Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:09:59.922Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:10:02.568Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:10:02.569Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:10:08.147Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","options":[],"quantity":1,"unitPrice":49,"total":49,"type":"cxc_payment","metadata":{"cxcId":2}}
+[2026-01-13T17:10:08.147Z] [POST /api/sales] FOUND CXC Payment for ID: 2
+[2026-01-13T17:10:23.818Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:10:23.819Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:10:26.802Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - JR","options":[],"quantity":1,"unitPrice":129,"total":129,"type":"cxc_payment","metadata":{"cxcId":1}}
+[2026-01-13T17:10:26.803Z] [POST /api/sales] FOUND CXC Payment for ID: 1
+[2026-01-13T17:18:04.800Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:18:04.800Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:19:29.150Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:19:29.151Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:19:33.614Z] [POST /api/sales] Item: {"productName":"Chapata de Pechuga de Pavo","baseName":"Chapata de Pechuga de Pavo","options":[],"quantity":1,"unitPrice":129,"total":129}
+[2026-01-13T17:19:59.905Z] [GET /api/customers] CXC Items Found: 2
+[2026-01-13T17:19:59.905Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:20:18.094Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=129
+[2026-01-13T17:20:19.116Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T17:20:49.175Z] [GET /api/customers] CXC Items Found: 3
+[2026-01-13T17:20:49.175Z] [GET /api/customers] Sample CXC Item: {"phone":"1234567897","product":"Chapata de Pechuga de Pavo"}
+[2026-01-13T17:21:05.116Z] [POST /api/cxc] Received: Name=JR, Phone=1234567897, Total=387
+[2026-01-13T17:21:06.129Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T17:21:21.705Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T17:21:31.730Z] [GET /api/customers] CXC Items Found: 4
+[2026-01-13T17:21:31.731Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:21:36.090Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - JR","options":[],"quantity":1,"unitPrice":387,"total":387,"type":"cxc_payment","metadata":{"cxcId":4}}
+[2026-01-13T17:21:36.091Z] [POST /api/sales] FOUND CXC Payment for ID: 4
+[2026-01-13T17:22:17.628Z] [GET /api/customers] CXC Items Found: 4
+[2026-01-13T17:22:17.629Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:22:19.593Z] [POST /api/sales] Item: {"productName":"Pago de Cuenta - Ricardo Corona","options":[],"quantity":1,"unitPrice":129,"total":129,"type":"cxc_payment","metadata":{"cxcId":3}}
+[2026-01-13T17:22:19.594Z] [POST /api/sales] FOUND CXC Payment for ID: 3
+[2026-01-13T17:26:50.345Z] [GET /api/customers] CXC Items Found: 4
+[2026-01-13T17:26:50.346Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:27:03.059Z] [GET /api/customers] CXC Items Found: 4
+[2026-01-13T17:27:03.059Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:27:15.462Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=84
+[2026-01-13T17:27:16.421Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T17:36:30.170Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T17:39:01.764Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T17:39:01.765Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:39:38.264Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T17:39:38.264Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:39:38.722Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T17:39:38.722Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:39:41.723Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T17:39:41.724Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T17:44:27.863Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T17:51:04.444Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T17:53:55.045Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T18:06:03.226Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T18:06:03.226Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T18:06:33.892Z] [POST /api/sales] Item: {"productName":"Chapata de Pechuga de Pavo","baseName":"Chapata de Pechuga de Pavo","options":[],"quantity":1,"unitPrice":129,"total":129}
+[2026-01-13T18:06:34.437Z] [POST /api/sales] Item: {"productName":"Chapata de Pechuga de Pavo","baseName":"Chapata de Pechuga de Pavo","options":[],"quantity":1,"unitPrice":129,"total":129}
+[2026-01-13T18:15:32.125Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T20:13:55.142Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T20:13:55.148Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T20:25:16.138Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T20:26:16.672Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T20:26:16.672Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T20:26:26.407Z] [POST /api/sales] Item: {"productName":"Enchiladas Verdes (3)","baseName":"Enchiladas Verdes (3)","options":[],"quantity":1,"unitPrice":79,"total":79}
+[2026-01-13T20:51:41.785Z] [GET /api/customers] CXC Items Found: 5
+[2026-01-13T20:51:41.786Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T20:52:13.811Z] [POST /api/cxc] Received: Name=Ricardo Corona, Phone=4434111448, Total=54
+[2026-01-13T20:52:14.895Z] [POST /api/cxc] Transaction completed successfully
+[2026-01-13T21:02:11.936Z] [GET /api/customers] CXC Items Found: 6
+[2026-01-13T21:02:11.937Z] [GET /api/customers] Sample CXC Item: {"phone":"4434111448","product":"Latte - 12 Oz, Entera"}
+[2026-01-13T21:16:20.782Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T21:36:45.379Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T21:40:49.020Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T23:33:39.693Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T23:35:01.829Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T23:51:56.481Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T23:53:46.702Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T23:53:49.766Z] [POST /api/sales] Item: {"productName":"Omelette de Jamón","baseName":"Omelette de Jamón","options":[],"quantity":118,"unitPrice":69,"total":8142}
+[2026-01-13T23:57:31.945Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-13T23:57:58.964Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-13T23:59:02.041Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T00:00:35.313Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-14T00:05:11.307Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T00:26:50.910Z] [GET /api/tickets] Query: {"from":"2026-01-13","to":"2026-01-13"}
+[2026-01-14T13:34:57.978Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T13:35:03.103Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T14:10:35.222Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:10:50.789Z] [POST /api/sales] Item: {"productName":"Capuccino - Grande","baseName":"Capuccino","options":["Grande"],"quantity":1,"unitPrice":59,"total":59}
+[2026-01-14T14:11:21.968Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T14:11:24.983Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-14"}
+[2026-01-14T14:11:29.315Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:15:00.437Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T14:15:35.964Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:44:34.799Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:46:25.029Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:53:47.419Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T14:53:51.612Z] [POST /api/sales] Item: {"productName":"Chapata de Pechuga de Pavo","baseName":"Chapata de Pechuga de Pavo","options":[],"quantity":1,"unitPrice":129,"total":129}
+[2026-01-14T15:09:52.051Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:26:35.430Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:33:40.263Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T15:33:47.765Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T15:33:48.795Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-14"}
+[2026-01-14T15:33:50.763Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T15:33:58.372Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:34:01.027Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:35:26.556Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T15:37:54.228Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:38:00.881Z] [POST /api/sales] Item: {"productName":"Fruta con Yogurt","baseName":"Fruta con Yogurt","options":[],"quantity":1,"unitPrice":59,"total":59}
+[2026-01-14T15:43:06.811Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T15:43:19.919Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T16:17:01.153Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T16:17:03.133Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T16:26:54.043Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T16:28:47.398Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T16:36:29.758Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T16:36:51.858Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T16:37:11.109Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T17:15:13.652Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T17:46:14.883Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T17:46:17.712Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T17:46:22.843Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T17:47:01.324Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T17:47:16.161Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T17:47:22.084Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T17:55:11.915Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T17:59:21.289Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T18:57:09.147Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:01:09.631Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:01:13.534Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:01:26.997Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:11:49.159Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:13:03.515Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:13:08.001Z] [GET /api/tickets] Query: {"undissected":"true"}
+[2026-01-14T19:13:08.869Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:13:10.004Z] [GET /api/tickets] Query: {"from":"2026-01-01","to":"2026-01-14"}
+[2026-01-14T19:13:41.564Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
+[2026-01-14T19:19:19.159Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:23:19.362Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:26:43.255Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:27:38.935Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:31:05.359Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:31:41.226Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:31:52.161Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:32:50.873Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:41:46.444Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:41:53.157Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:44:15.311Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:44:30.382Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:45:20.782Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:46:02.044Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:46:52.746Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:51:05.389Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T19:53:25.764Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:33:01.585Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:33:05.098Z] [GET /api/customers] CXC Items Found: 0
+[2026-01-14T20:33:07.419Z] [GET /api/tickets] Query: {"from":"2026-01-14","to":"2026-01-14"}
