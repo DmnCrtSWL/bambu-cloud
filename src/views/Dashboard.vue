@@ -267,6 +267,26 @@ const formatCurrency = (val) => new Intl.NumberFormat('es-MX', { style: 'currenc
 
         </div>
 
+        <!-- Monthly Goal Card -->
+        <div class="card full-width monthly-goal-card" v-if="stats.summary.monthlyStats">
+             <div class="card-header-row">
+                <div class="flex items-center gap-2">
+                    <div class="icon-box-sm"><Target size="18" /></div>
+                    <h3 class="card-title mb-0">Meta Mensual - {{ stats.summary.monthlyStats.monthName }}</h3>
+                </div>
+                <span class="goal-badges">{{ formatCurrency(stats.summary.monthlyStats.current) }} / {{ formatCurrency(stats.summary.monthlyStats.goal) }}</span>
+            </div>
+            <div class="progress-bar big-bar">
+                <div 
+                    class="progress-fill" 
+                    :style="{ width: Math.min((stats.summary.monthlyStats.current / stats.summary.monthlyStats.goal) * 100, 100) + '%' }"
+                ></div>
+            </div>
+            <p class="goal-subtitle">
+                Has alcanzado el <strong>{{ Math.round((stats.summary.monthlyStats.current / stats.summary.monthlyStats.goal) * 100) }}%</strong> de tu meta mensual.
+            </p>
+        </div>
+
     </div>
   </div>
 </template>
@@ -562,5 +582,48 @@ const formatCurrency = (val) => new Intl.NumberFormat('es-MX', { style: 'currenc
     .filter-group:has(.range-inputs) {
         width: 100%; /* Active group takes full row to give space for input */
     }
+}
+
+/* Monthly Goal Card specific styles */
+.monthly-goal-card {
+    background: linear-gradient(to right, #ffffff, #f8fafc);
+    /* border removed to match other cards */
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icon-box-sm {
+    width: 32px;
+    height: 32px;
+    background: #ECFDF5;
+    color: #10B981;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-0 { margin-bottom: 0 !important; }
+
+.goal-badges {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.big-bar {
+    height: 12px;
+    background: #e2e8f0;
+}
+
+.goal-subtitle {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 </style>

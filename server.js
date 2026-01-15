@@ -683,6 +683,89 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
         // For speed, let's just use the current range 'cxc' sales for now unless requested otherwise.
         // User asked for "Card 1 (Sales) and Card 2 (Orders)".
 
+        // 1. Calculate Dynamic Daily Goal
+        // 1. Calculate Dynamic Daily Goal (Excluding Sundays)
+        let workingDays = 0;
+
+        if (from && to) {
+            // Force timezone interpretation to ensure correct day-of-week check for CDMX
+            // Simple approach: Iterate dates and create Date objects
+            // Careful with Timezones. Creating a Date from '2023-01-01' is usually UTC. '2023-01-01T06:00' is CDMX start.
+
+            // Loop from start Date to end Date
+            let current = new Date(from);
+            // We need to parse 'to' date carefully.
+            // Let's rely on simple string manipulation or add 1 day loop
+            const endQ = new Date(to);
+
+            // Normalize times to midnight to avoid infinite loops or partial day issues
+            current.setUTCHours(0, 0, 0, 0);
+            endQ.setUTCHours(0, 0, 0, 0);
+
+            while (current <= endQ) {
+                // Check day of week. 
+                // Using getUTCDay() because 'from' string 'YYYY-MM-DD' usually parses to UTC midnight in JS
+                // Sunday is 0
+                const day = current.getUTCDay();
+                if (day !== 0) {
+                    workingDays++;
+                }
+                // Add 1 day
+                current.setDate(current.getDate() + 1);
+            }
+        } else {
+            // If just today (or no range), calculate for today:
+            // Check if today is Sunday?
+            // Actually, if 'from/to' are missing, logic usually defaults to 'today' above.
+            // But let's assume if logic fell here, we want 1 day default unless it's Sunday.
+            // Simplified: Default 1 day.
+            workingDays = 1;
+            const todayDay = new Date().getDay(); // Local server time is usually fine for "Today"
+            if (todayDay === 0) workingDays = 0; // Sundays have 0 goal
+        }
+
+        const dynamicGoal = 5500 * workingDays;
+
+        // 2. Calculate Monthly Goal (Fixed 120k, Full Current Month)
+        const now = new Date();
+        const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        const currentMonthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+
+        // Adjust for CDMX Timezone logic if needed, but simple Date object usually suffices for whole month chunks
+        // unless we need strict timezone exactness. Let's use simple string logic to be safe with stored dates.
+        const mStart = new Date(currentMonthStart.toLocaleString('en-US', { timeZone: 'America/Mexico_City' }));
+        const mEnd = new Date(currentMonthEnd.toLocaleString('en-US', { timeZone: 'America/Mexico_City' }));
+
+        // Actually, re-use getCDMXRange logic which handles UTC offset correctly for database 'createdAt' comparison
+        // We want range: 1st of "To" month (or current) to End of "To" month
+        const referenceDate = to ? new Date(to) : new Date(); // Use the end date of filter or today
+        const y = referenceDate.getFullYear();
+        const m = referenceDate.getMonth();
+        // Construct YYYY-MM-DD strings
+        const firstDayStr = `${y}-${String(m + 1).padStart(2, '0')}-01`;
+        const lastDayObj = new Date(y, m + 1, 0);
+        const lastDayStr = `${y}-${String(m + 1).padStart(2, '0')}-${String(lastDayObj.getDate()).padStart(2, '0')}`;
+
+        const { start: monthStart, end: monthEnd } = getCDMXRange(firstDayStr, lastDayStr);
+
+        const monthSalesCols = await db.select({ total: sales.total, method: sales.paymentMethod }).from(sales)
+            .where(and(
+                isNull(sales.deletedAt),
+                between(sales.createdAt, monthStart, monthEnd)
+            ));
+
+        const monthTotal = monthSalesCols.reduce((acc, s) => {
+            const method = s.method ? s.method.toLowerCase().trim() : '';
+            if (['efectivo', 'tarjeta', 'transferencia', 'uber eats'].includes(method)) {
+                return acc + parseFloat(s.total);
+            }
+            return acc;
+        }, 0);
+
+        const currentMonthName = referenceDate.toLocaleString('es-MX', { month: 'long' });
+        const capitalizedMonth = currentMonthName.charAt(0).toUpperCase() + currentMonthName.slice(1);
+
+
         const totalCXC_InRange = currentSales
             .filter(s => s.paymentMethod === 'CXC' || s.paymentMethod === 'cxc')
             .reduce((acc, s) => acc + parseFloat(s.total), 0);
@@ -690,8 +773,13 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
         res.json({
             totalSales,
             totalOrders,
-            goal: 5500, // Hardcoded for now
-            totalCXC: totalCXC_InRange // Showing CXC generated in this period
+            goal: dynamicGoal,
+            totalCXC: totalCXC_InRange,
+            monthlyStats: {
+                goal: 120000,
+                current: monthTotal,
+                monthName: capitalizedMonth
+            }
         });
 
     } catch (e) {
