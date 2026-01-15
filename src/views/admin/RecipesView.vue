@@ -44,7 +44,7 @@ const getProductionCost = (ingredients) => {
 };
 
 const currentPage = ref(1);
-const itemsPerPage = 8;
+const itemsPerPage = 9;
 
 const filteredRecipes = computed(() => {
     let result = recipesList.value.map(r => ({

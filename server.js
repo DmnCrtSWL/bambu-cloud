@@ -17,6 +17,48 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Helper to get CDMX Date Range from YYYY-MM-DD (Adjusted for UTC-6)
+const getCDMXRange = (from, to) => {
+    // We want the range to represent Mexico Day 00:00 to 23:59.
+    // Mexico City is UTC-6 (Standard). 
+    // So 00:00 MX = 06:00 UTC.
+    // 23:59:59 MX = 05:59:59 UTC Next Day.
+
+    let start, end;
+
+    if (!from || !to) { // Default to "Today" in Mexico
+        // Get current time in Mexico to know distinct "Today" components
+        const now = new Date();
+        const mxDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Mexico_City' }));
+        const year = mxDate.getFullYear();
+        const month = String(mxDate.getMonth() + 1).padStart(2, '0');
+        const day = String(mxDate.getDate()).padStart(2, '0');
+        const todayStr = `${year}-${month}-${day}`;
+
+        // Construct UTC bounds
+        // Start: todayStr 06:00:00 UTC
+        start = new Date(`${todayStr}T06:00:00.000Z`);
+
+        // End: tomorrow 05:59:59.999 UTC
+        // Easier: Start + 24 hours - 1ms, or just set end explicitly
+        const tomorrow = new Date(start);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        end = new Date(tomorrow.getTime() - 1); // 05:59:59.999
+    } else {
+        // From/To are strings YYYY-MM-DD (Local)
+        // From 00:00 MX -> From 06:00 UTC
+        start = new Date(`${from}T06:00:00.000Z`);
+
+        // To 23:59 MX -> To+1 05:59:59 UTC
+        const toDate = new Date(`${to}T06:00:00.000Z`);
+        const nextDay = new Date(toDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+        end = new Date(nextDay.getTime() - 1);
+    }
+
+    return { start, end };
+};
+
 app.get('/ping', (req, res) => res.send('pong'));
 
 // --- DEBUG ENDPOINT (Forced Top Priority) ---
@@ -34,16 +76,16 @@ app.get('/api/orders/latest/id', async (req, res) => {
 app.get('/api/health-db', async (req, res) => {
     try {
         const result = await db.execute(sql`SELECT NOW()`);
-        res.json({ 
-            status: 'ok', 
-            serverTime: new Date().toISOString(), 
+        res.json({
+            status: 'ok',
+            serverTime: new Date().toISOString(),
             dbTime: result.rows[0],
-            connectionStringStart: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 10) : 'MISSING' 
+            connectionStringStart: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 10) : 'MISSING'
         });
     } catch (error) {
         console.error('DB Health Check Failed:', error);
-        res.status(500).json({ 
-            status: 'error', 
+        res.status(500).json({
+            status: 'error',
             message: error.message,
             stack: error.stack,
             connectionStringStart: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 10) : 'MISSING'
@@ -55,23 +97,23 @@ app.get('/api/health-db', async (req, res) => {
 const verifyToken = async (req, res, next) => {
     // Skip for public routes (explicitly handled here or just apply middleware selectively)
     // We will apply middleware selectively.
-    
+
     const bearerHeader = req.headers['authorization'];
-    
+
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
-        
+
         try {
             const decoded = jwt.verify(bearerToken, process.env.JWT_SECRET);
-            
+
             // Critical: Check if user actually exists in DB
             const userExists = await db.select().from(users).where(and(eq(users.id, decoded.id), isNull(users.deletedAt)));
-            
+
             if (!userExists || userExists.length === 0) {
                 return res.status(401).json({ error: 'Usuario ya no existe. Acceso denegado.' });
             }
-            
+
             req.user = decoded;
             next();
         } catch (err) {
@@ -108,26 +150,14 @@ app.get('/api/sales', verifyToken, async (req, res) => {
         let conditions = [isNull(sales.deletedAt)];
 
         if (today === 'true') {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const todayStr = `${year}-${month}-${day}`;
-
-            // Create range for "Today" using local bounds converted to Date objects (which driver handles)
-            const start = new Date(todayStr + 'T00:00:00');
-            const end = new Date(todayStr + 'T23:59:59');
-
+            const { start, end } = getCDMXRange(); // Default to today
             conditions.push(between(sales.createdAt, start, end));
         } else if (from && to) {
-            // "from" and "to" are expected as YYYY-MM-DD
-            const start = new Date(from + 'T00:00:00');
-            const end = new Date(to + 'T23:59:59');
+            const { start, end } = getCDMXRange(from, to);
             conditions.push(between(sales.createdAt, start, end));
         } else if (from) {
-             const start = new Date(from + 'T00:00:00');
-             const end = new Date(from + 'T23:59:59');
-             conditions.push(between(sales.createdAt, start, end));
+            const { start, end } = getCDMXRange(from, from);
+            conditions.push(between(sales.createdAt, start, end));
         }
 
         const salesResult = await db.select().from(sales)
@@ -157,41 +187,16 @@ app.get('/api/tickets', verifyToken, async (req, res) => {
         let conditions = [isNull(tickets.deletedAt)];
 
         if (today === 'true') {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const todayStr = `${year}-${month}-${day}`;
-
-            const start = new Date(todayStr + 'T00:00:00');
-            const end = new Date(todayStr + 'T23:59:59');
-
-            console.log(`[GET /api/tickets] Filter TODAY:`, {
-                todayStr,
-                start: start.toISOString(),
-                end: end.toISOString()
-            });
-
+            const { start, end } = getCDMXRange();
+            console.log(`[GET /api/tickets] Filter TODAY Range:`, { start: start.toISOString(), end: end.toISOString() });
             conditions.push(between(tickets.purchaseDate, start, end));
         } else if (undissected === 'true') {
             // Show all tickets that are NOT 'Desglosado' (so 'No Desglosado', or anything else)
-            // Using 'ne' (not equal) or explicit check.
-            const { ne } = await import('drizzle-orm'); // Dynamic import if needed, or just use sql/ne from top
-            // actually 'ne' is not imported at top. Let's check imports.
-            // imports: eq, and, like, gte, lte, asc, desc, isNull, sql, between
-            // I'll add 'ne' to imports in a separate call or use sql.
-            // simpler: utilize sql for "status != 'Desglosado'" to be safe and avoid import mess mid-file
             conditions.push(sql`${tickets.status} != 'Desglosado'`);
         } else if (from && to) {
-            // Apply range filtering for both ranges and specific days
-            // The client now sends explicit YYYY-MM-DD "from" and "to" for Today/Specific Day,
-            // so we can rely on standard start/end of day construction.
-            const fromDate = new Date(from + 'T00:00:00');
-            const toDate = new Date(to + 'T23:59:59');
-
-            console.log(`[GET /api/tickets] Filter RANGE:`, { from, to, fromDate: fromDate.toISOString(), toDate: toDate.toISOString() });
-
-            conditions.push(between(tickets.purchaseDate, fromDate, toDate));
+            const { start, end } = getCDMXRange(from, to);
+            console.log(`[GET /api/tickets] Filter RANGE:`, { from, to, start: start.toISOString(), end: end.toISOString() });
+            conditions.push(between(tickets.purchaseDate, start, end));
         }
 
         const result = await db.select()
@@ -213,11 +218,10 @@ app.post('/api/tickets', verifyToken, async (req, res) => {
         const { ticketRef, provider, total, paymentMethod, purchaseDate } = req.body;
 
         // Check if purchaseDate already has time component (T...)
-        // If frontend sends "2026-01-12T12:00:00.000Z", we use it as is.
-        // If it sends "2026-01-12", we append T12:00:00.
-        const finalPurchaseDate = purchaseDate 
-            ? (purchaseDate.includes('T') ? new Date(purchaseDate) : new Date(purchaseDate + 'T12:00:00'))
-            : new Date();
+        // Default to Noon Mexico (18:00 UTC) if no time specified, to ensure it lands safely in the middle of the day
+        const finalPurchaseDate = purchaseDate
+            ? (purchaseDate.includes('T') ? new Date(purchaseDate) : new Date(purchaseDate + 'T18:00:00.000Z'))
+            : new Date(); // Today 'now' is fine, or default to noon? 'Now' is exact creation.
         console.log('[POST /api/tickets] Final Date to save:', finalPurchaseDate);
 
         const [newTicket] = await db.insert(tickets).values({
@@ -239,7 +243,7 @@ app.post('/api/tickets', verifyToken, async (req, res) => {
         res.json(newTicket);
     } catch (error) {
         console.error('[POST /api/tickets] Error:', error);
-        
+
         // Quick debug logging to file
         // const fs = await import('fs');
         // fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] POST /api/tickets ERROR: ${error.message}\n${error.stack}\n\n`);
@@ -287,8 +291,8 @@ app.put('/api/tickets/:id', verifyToken, async (req, res) => {
                 provider,
                 total,
                 paymentMethod,
-                purchaseDate: purchaseDate 
-                    ? (purchaseDate.includes('T') ? new Date(purchaseDate) : new Date(purchaseDate + 'T12:00:00'))
+                purchaseDate: purchaseDate
+                    ? (purchaseDate.includes('T') ? new Date(purchaseDate) : new Date(purchaseDate + 'T18:00:00.000Z'))
                     : undefined
             })
             .where(eq(tickets.id, id));
@@ -604,24 +608,8 @@ app.get('/api/inventory', verifyToken, async (req, res) => {
 
 // --- DASHBOARD ENDPOINTS --- (PROTECTED)
 // --- DASHBOARD ENDPOINTS --- (PROTECTED)
-// Helper to get CDMX Date Range from YYYY-MM-DD
-const getCDMXRange = (from, to) => {
-    if (!from || !to) { // Default to Today
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const todayStr = `${year}-${month}-${day}`;
-        return {
-            start: new Date(todayStr + 'T00:00:00'),
-            end: new Date(todayStr + 'T23:59:59')
-        };
-    }
-    return {
-        start: new Date(from + 'T00:00:00'),
-        end: new Date(to + 'T23:59:59') 
-    };
-};
+// Helper to get CDMX Date Range from YYYY-MM-DD (Adjusted for UTC-6)
+// (Moved to top of file)
 
 app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
     try {
@@ -636,7 +624,7 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
                 isNull(sales.deletedAt),
                 between(sales.createdAt, start, end)
             ));
-        
+
         console.log(`[GET /api/dashboard/summary] Found ${currentSales.length} sales in range.`);
         if (currentSales.length > 0) {
             console.log(`[GET /api/dashboard/summary] First sale date: ${currentSales[0].createdAt}`);
@@ -659,7 +647,7 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
         // The CXCView logic uses cxc table. Let's start with simple sum of 'cxc' sales in range for consistency,
         // OR better: All outstanding debt from 'cxc' table.
         // DashboardView shows "Cuentas por Cobrar" -> "Pendiente de pago". Makes sense to be ALL time debt.
-        
+
         const allPendingCXC = await db.select().from(cxc);
         // Calculate total debt for each customer (sum of sales - sum of payments)
         // Or simpler: cxc table doesn't hold balance. We need to query sales.
@@ -669,12 +657,12 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
         // Leaving CXC as "Sales defined as CXC in range" or "Total Debt"?
         // Let's stick to: Sum of cxc table entries (customers) isn't total money.
         // Re-using logic from "cxc" endpoint logic would be best but standardizing on Sales and Orders first.
-        
+
         // Correct approach for CXC Card: Show TOTAL PENDING DEBT (All time)
         // We will calc this by iterating all cxc customers and summing their balances? 
         // For speed, let's just use the current range 'cxc' sales for now unless requested otherwise.
         // User asked for "Card 1 (Sales) and Card 2 (Orders)".
-        
+
         const totalCXC_InRange = currentSales
             .filter(s => s.paymentMethod === 'CXC' || s.paymentMethod === 'cxc')
             .reduce((acc, s) => acc + parseFloat(s.total), 0);
@@ -686,14 +674,14 @@ app.get('/api/dashboard/summary', verifyToken, async (req, res) => {
             totalCXC: totalCXC_InRange // Showing CXC generated in this period
         });
 
-    } catch(e) {
+    } catch (e) {
         console.error(e);
-        res.status(500).json({error: 'Summary error'});
+        res.status(500).json({ error: 'Summary error' });
     }
 });
 
 app.get('/api/dashboard/comparison', verifyToken, async (req, res) => {
-     res.json({ current: 0, previous: 0, diff: 0 }); // Placeholder
+    res.json({ current: 0, previous: 0, diff: 0 }); // Placeholder
 });
 
 app.get('/api/dashboard/top-products', verifyToken, async (req, res) => {
@@ -706,18 +694,18 @@ app.get('/api/dashboard/top-products', verifyToken, async (req, res) => {
             name: saleItems.productName,
             count: sql`sum(${saleItems.quantity})` // or count
         })
-        .from(saleItems)
-        .innerJoin(sales, eq(saleItems.saleId, sales.id))
-        .where(and(
-            isNull(sales.deletedAt),
-            between(sales.createdAt, start, end)
-        ))
-        .groupBy(saleItems.productName)
-        .orderBy(desc(sql`sum(${saleItems.quantity})`))
-        .limit(5);
+            .from(saleItems)
+            .innerJoin(sales, eq(saleItems.saleId, sales.id))
+            .where(and(
+                isNull(sales.deletedAt),
+                between(sales.createdAt, start, end)
+            ))
+            .groupBy(saleItems.productName)
+            .orderBy(desc(sql`sum(${saleItems.quantity})`))
+            .limit(5);
 
         res.json(result);
-    } catch(e) {
+    } catch (e) {
         console.error(e);
         res.status(500).json([]);
     }
@@ -725,7 +713,7 @@ app.get('/api/dashboard/top-products', verifyToken, async (req, res) => {
 
 app.get('/api/dashboard/top-customers', verifyToken, async (req, res) => {
     try {
-         const { from, to } = req.query;
+        const { from, to } = req.query;
         const { start, end } = getCDMXRange(from, to);
 
         const result = await db.select({
@@ -733,16 +721,16 @@ app.get('/api/dashboard/top-customers', verifyToken, async (req, res) => {
             count: sql`count(*)`,
             totalSpent: sql`sum(${sales.total})`
         })
-        .from(sales)
-        .where(and(
-            isNull(sales.deletedAt),
-            between(sales.createdAt, start, end),
-            sql`${sales.customerName} IS NOT NULL`,
-            sql`${sales.customerName} != 'Venta en Barra'` // Exclude generic
-        ))
-        .groupBy(sales.customerName)
-        .orderBy(desc(sql`count(*)`))
-        .limit(5);
+            .from(sales)
+            .where(and(
+                isNull(sales.deletedAt),
+                between(sales.createdAt, start, end),
+                sql`${sales.customerName} IS NOT NULL`,
+                sql`${sales.customerName} != 'Venta en Barra'` // Exclude generic
+            ))
+            .groupBy(sales.customerName)
+            .orderBy(desc(sql`count(*)`))
+            .limit(5);
 
         // Calculate percentages
         const totalVisits = result.reduce((acc, r) => acc + Number(r.count), 0);
@@ -752,8 +740,8 @@ app.get('/api/dashboard/top-customers', verifyToken, async (req, res) => {
         }));
 
         res.json(withPct);
-    } catch(e) {
-         console.error(e);
+    } catch (e) {
+        console.error(e);
         res.status(500).json([]);
     }
 });
@@ -763,12 +751,12 @@ app.get('/api/dashboard/weekly-stats', verifyToken, async (req, res) => {
         // Calculate "This Week" vs "Last Week" independent of query params usually
         // But let's anchor "This Week" to the "Data To" date if provided, or Now.
         const anchor = req.query.to ? new Date(req.query.to) : new Date();
-        
+
         // Logic for weekly stats... placeholder for now as focus is Card 1 & 2
         res.json({ thisWeek: 0, lastWeek: 0, diff: 0 });
-    } catch(e) {
-         console.error(e);
-        res.status(500).json({error: 'Weekly stats error'});
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ error: 'Weekly stats error' });
     }
 });
 
@@ -836,13 +824,13 @@ app.post('/api/orders', async (req, res) => {
                     // Ideally frontend sends menuId, but let's look up by name/id if possible.
                     // Checking MenuView.vue -> it sends 'productName'. 
                     // Let's try to find the menu item by name to get the recipe.
-                    
+
                     const menuItem = await tx.select().from(menuItems).where(eq(menuItems.name, item.productName));
-                    
+
                     if (menuItem && menuItem.length > 0 && menuItem[0].recipeId) {
                         const recipeId = menuItem[0].recipeId;
                         const ingredients = await tx.select().from(recipeIngredients).where(eq(recipeIngredients.recipeId, recipeId));
-                        
+
                         if (ingredients.length > 0) {
                             const usageInserts = ingredients.map(ing => ({
                                 orderId: newOrder.id,
@@ -1116,14 +1104,14 @@ app.put('/api/cxc/:id/pay', verifyToken, async (req, res) => {
 
 // --- HELPER FUNCTIONS ---
 const deductInventory = async (tx, item, saleId = null) => {
-     // A. Inventory Deduction Logic
+    // A. Inventory Deduction Logic
     if (item.type !== 'cxc_payment') {
         let recipeIdToUse = null;
 
         // Normalize lookup name
         const lookupName = (item.baseName || item.productName || '').trim();
         console.log(`[Inventory] Processing Deduction for "${lookupName}" (Original: "${item.productName}")`);
-        
+
         // 1. Try to find via Menu Item (Preferred match)
         const menuItemsFound = await tx.select().from(menuItems).where(eq(menuItems.name, lookupName)).limit(1);
 
@@ -1142,7 +1130,7 @@ const deductInventory = async (tx, item, saleId = null) => {
                 recipeIdToUse = recipeResults[0].id;
                 console.log(`[Inventory] Found Recipe ID ${recipeIdToUse} via Direct Recipe Name match "${lookupName}"`);
             } else {
-                 console.log(`[Inventory] No Direct Recipe Name match for "${lookupName}".`);
+                console.log(`[Inventory] No Direct Recipe Name match for "${lookupName}".`);
             }
         }
 
@@ -1166,14 +1154,14 @@ const deductInventory = async (tx, item, saleId = null) => {
                                 // If this option was selected (Flexible match: Trimmed + Case Insensitive)
                                 const normalizedOptName = opt.name.trim().toLowerCase();
                                 const isSelected = itemOptions.some(selected => selected.trim().toLowerCase() === normalizedOptName);
-                                
+
                                 if (isSelected) {
                                     console.log(`[Inventory] Variation Match: "${opt.name}"`);
                                     // Check mapping
                                     if (opt.ingredientMapping && opt.ingredientMapping.inventoryItem) {
                                         const mapping = opt.ingredientMapping;
                                         console.log(`[Inventory] Mapping found: ${JSON.stringify(mapping)}`);
-                                        
+
                                         // Add to extras list (to be added)
                                         extraIngredients.push({
                                             productName: mapping.inventoryItem,
@@ -1196,7 +1184,7 @@ const deductInventory = async (tx, item, saleId = null) => {
                 }
             } else {
                 if (itemOptions && itemOptions.length > 0) {
-                     console.log(`[Inventory] Item has options but no linked Menu Item found to resolve them.`);
+                    console.log(`[Inventory] Item has options but no linked Menu Item found to resolve them.`);
                 }
             }
 
@@ -1212,7 +1200,7 @@ const deductInventory = async (tx, item, saleId = null) => {
 
             if (finalIngredients.length > 0) {
                 const usageToInsert = finalIngredients.map(ing => ({
-                    saleId: saleId, 
+                    saleId: saleId,
                     productName: ing.productName,
                     quantity: (Number(ing.quantity) * Number(item.quantity)).toString(),
                     unit: ing.unit
@@ -1264,7 +1252,7 @@ app.post('/api/sales', verifyToken, async (req, res) => {
 
                 for (const item of items) {
                     logToFile(`[POST /api/sales] Item: ${JSON.stringify(item)}`);
-                    
+
                     // Use Helper
                     await deductInventory(tx, item, newSale.id);
 
@@ -1305,7 +1293,7 @@ app.get('/api/inventory/alerts', verifyToken, async (req, res) => {
         // 1. Get Active Menu Items with Recipes
         const menu = await db.select().from(menuItems).where(eq(menuItems.isActive, true));
         const itemsWithRecipe = menu.filter(i => i.recipeId);
-        
+
         if (itemsWithRecipe.length === 0) return res.json([]);
 
         // 2. Get All Recipe Ingredients
@@ -1313,7 +1301,7 @@ app.get('/api/inventory/alerts', verifyToken, async (req, res) => {
 
         // 3. Calculate Current Stock for ALL ingredients known
         //    Stock = Sum(Ticket Items) - Sum(Inventory Usage)
-        
+
         // Fetch sums using raw SQL for efficiency
         const inputsRes = await db.execute(sql`
             SELECT product as name, SUM(quantity) as total 
@@ -1328,7 +1316,7 @@ app.get('/api/inventory/alerts', verifyToken, async (req, res) => {
 
         // Map: IngredientName -> currentStock
         const stockMap = {};
-        
+
         inputsRes.rows.forEach(row => {
             stockMap[row.name] = parseFloat(row.total);
         });
@@ -1343,7 +1331,7 @@ app.get('/api/inventory/alerts', verifyToken, async (req, res) => {
 
         for (const item of itemsWithRecipe) {
             const recipeIngs = allIngredients.filter(ri => ri.recipeId === item.recipeId);
-            
+
             if (recipeIngs.length === 0) continue; // No ingredients defined, skip
 
             let maxPortions = Infinity;
@@ -1351,8 +1339,8 @@ app.get('/api/inventory/alerts', verifyToken, async (req, res) => {
             for (const ing of recipeIngs) {
                 const available = stockMap[ing.productName] || 0;
                 const required = parseFloat(ing.quantity);
-                
-                if (required <= 0) continue; 
+
+                if (required <= 0) continue;
 
                 const portions = Math.floor(available / required);
                 if (portions < maxPortions) {
@@ -1559,7 +1547,7 @@ app.get('/api/reports/daily', verifyToken, async (req, res) => {
         result.forEach(row => {
             const amount = parseFloat(row.total);
             const method = row.paymentMethod.toLowerCase();
-            
+
             // Only add to Total if it's REAL income (Cash, Card, Transfer, Uber)
             // STRICT WHITELIST APPROACH
             const validIncomeMethods = ['efectivo', 'tarjeta', 'transferencia', 'uber eats'];
@@ -1740,7 +1728,7 @@ app.get('/api/reports/detailed', verifyToken, async (req, res) => {
                     customer: sale.customerName || 'N/A',
                     time: new Date(sale.createdAt).toLocaleTimeString()
                 });
-            } 
+            }
             // Real Sales
             else if (validMethods.includes(method)) {
                 salesSummary.total += total;
@@ -1756,7 +1744,7 @@ app.get('/api/reports/detailed', verifyToken, async (req, res) => {
                 between(fixedExpenses.expenseDate, start, end),
                 expenseUserFilter
             ));
-        
+
         const expenses = expenseData.map(e => ({
             id: e.id,
             concept: e.concept,
@@ -1788,7 +1776,7 @@ app.get('/api/reports/detailed', verifyToken, async (req, res) => {
                 between(cxc.createdAt, start, end),
                 cxcUserFilter
             ));
-        
+
         const cxcDay = cxcDayData.map(c => ({
             id: c.id,
             customer: c.customerName,
