@@ -29,6 +29,26 @@ app.get('/api/orders/latest/id', async (req, res) => {
     }
 });
 
+app.get('/api/health-db', async (req, res) => {
+    try {
+        const result = await db.execute(sql`SELECT NOW()`);
+        res.json({ 
+            status: 'ok', 
+            serverTime: new Date().toISOString(), 
+            dbTime: result.rows[0],
+            connectionStringStart: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 10) : 'MISSING' 
+        });
+    } catch (error) {
+        console.error('DB Health Check Failed:', error);
+        res.status(500).json({ 
+            status: 'error', 
+            message: error.message,
+            stack: error.stack,
+            connectionStringStart: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 10) : 'MISSING'
+        });
+    }
+});
+
 // --- MIDDLEWARE: VERIFY TOKEN ---
 const verifyToken = async (req, res, next) => {
     // Skip for public routes (explicitly handled here or just apply middleware selectively)
