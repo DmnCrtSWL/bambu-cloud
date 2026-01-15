@@ -21,9 +21,6 @@ async function cleanDatabase() {
             'ticket_items',
             'tickets',
             'fixed_expenses',
-            'recipe_ingredients',
-            'menu_items', // Linked to recipes
-            'recipes',
             'customers'
         ];
 

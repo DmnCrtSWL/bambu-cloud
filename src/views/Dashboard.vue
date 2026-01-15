@@ -188,9 +188,9 @@ const formatCurrency = (val) => new Intl.NumberFormat('es-MX', { style: 'currenc
       <div class="stat-card warning-card">
         <div class="icon-box"><Wallet size="24" /></div>
         <div class="stat-content">
-            <span class="stat-label">Cuentas por Cobrar</span>
+            <span class="stat-label">CXC</span>
             <span class="stat-value">{{ formatCurrency(stats.summary.totalCXC) }}</span>
-            <span class="stat-sub">Pendiente de pago</span>
+            <span class="stat-sub">Del día</span>
         </div>
       </div>
     </div>

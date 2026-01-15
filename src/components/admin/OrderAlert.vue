@@ -34,14 +34,13 @@ let pollInterval = null;
 let dismissTimeout = null;
 
 // Custom user sound
-const notificationSound = new Audio('/alert.mp3');
-
 const checkNewOrders = async () => {
   try {
-    const res = await authFetch('/api/orders/latest/id');
+    // Add cache buster
+    const res = await authFetch(`/api/orders/latest/id?t=${Date.now()}`);
     if (res.ok) {
       const data = await res.json();
-      const currentId = data.id;
+      const currentId = Number(data.id); // Ensure number
 
       if (lastOrderId.value === null) {
         lastOrderId.value = currentId;
@@ -87,11 +86,14 @@ const checkNewOrders = async () => {
 };
 
 const triggerAlert = () => {
-    // 1. Play Sound
+    // 1. Play Sound (Create new instance each time to avoid state issues)
     try {
-        notificationSound.currentTime = 0;
-        notificationSound.play().catch(e => console.warn('Audio blocked', e));
-    } catch (e) {}
+        const audio = new Audio('/alert.mp3');
+        audio.volume = 1.0; // Force 100% volume
+        audio.play().catch(e => console.error('Audio play failed (interaction required?):', e));
+    } catch (e) {
+        console.error('Audio setup failed:', e);
+    }
 
     // 2. Show Visual Alert
     showNotification.value = true;
