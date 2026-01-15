@@ -1,7 +1,7 @@
 
 import express from 'express';
 import cors from 'cors';
-import fs from 'fs';
+
 import { db } from './src/db/index.js';
 import { tickets, ticketItems, fixedExpenses, recipes, recipeIngredients, orders, orderItems, sales, saleItems, users, menuItems, customers, cxc, inventoryUsage } from './src/db/schema.js';
 import { eq, and, or, like, gte, lte, asc, desc, isNull, sql, between } from 'drizzle-orm';
@@ -1817,6 +1817,4 @@ app.get('/api/reports/detailed', verifyToken, async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+
