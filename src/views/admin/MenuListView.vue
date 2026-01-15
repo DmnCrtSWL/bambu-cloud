@@ -25,7 +25,7 @@ const fetchData = async () => {
     loading.value = true;
     try {
         const [recipesRes, inventoryRes] = await Promise.all([
-            authFetch('/api/menu-items'),
+            authFetch('/api/menu-items?details=true'),
             authFetch('/api/inventory')
         ]);
 

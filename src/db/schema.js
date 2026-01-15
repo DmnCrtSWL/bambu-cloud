@@ -1,4 +1,4 @@
-import { pgTable, text, serial, numeric, timestamp, integer, boolean, json } from 'drizzle-orm/pg-core';
+import { pgTable, text, serial, numeric, timestamp, integer, boolean, json, index } from 'drizzle-orm/pg-core';
 
 export const tickets = pgTable('tickets', {
     id: serial('id').primaryKey(),
@@ -11,6 +11,12 @@ export const tickets = pgTable('tickets', {
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
     deletedAt: timestamp('deleted_at'),
     userId: integer('user_id').references(() => users.id), // Added for user tracking
+}, (table) => {
+    return {
+        purchaseDateIdx: index('tickets_purchase_date_idx').on(table.purchaseDate),
+        statusIdx: index('tickets_status_idx').on(table.status),
+        ticketRefIdx: index('tickets_ref_idx').on(table.ticketRef),
+    };
 });
 
 export const ticketItems = pgTable('ticket_items', {
@@ -23,6 +29,11 @@ export const ticketItems = pgTable('ticket_items', {
     discount: numeric('discount', { precision: 15, scale: 6 }).default('0'),
     total: numeric('total', { precision: 15, scale: 6 }).notNull(),
     type: text('type').default('Insumo'), // 'Terminado', 'Insumo', 'Operativo'
+}, (table) => {
+    return {
+        ticketIdIdx: index('ticket_items_ticket_id_idx').on(table.ticketId),
+        productIdx: index('ticket_items_product_idx').on(table.product),
+    };
 });
 
 export const fixedExpenses = pgTable('fixed_expenses', {
@@ -36,6 +47,10 @@ export const fixedExpenses = pgTable('fixed_expenses', {
     createdAt: timestamp('created_at').defaultNow(),
     deletedAt: timestamp('deleted_at'),
     userId: integer('user_id').references(() => users.id), // Added for user tracking
+}, (table) => {
+    return {
+        expenseDateIdx: index('expenses_date_idx').on(table.expenseDate),
+    };
 });
 
 export const recipes = pgTable('recipes', {
@@ -56,6 +71,10 @@ export const recipeIngredients = pgTable('recipe_ingredients', {
     productName: text('product_name').notNull(), // Links to inventory/ticket_items product name
     quantity: numeric('quantity', { precision: 10, scale: 2 }).notNull(),
     unit: text('unit').notNull(),
+}, (table) => {
+    return {
+        recipeIdIdx: index('recipe_ingredients_recipe_id_idx').on(table.recipeId),
+    };
 });
 
 export const orders = pgTable('orders', {
@@ -70,6 +89,12 @@ export const orders = pgTable('orders', {
     total: numeric('total', { precision: 10, scale: 2 }).notNull(),
     createdAt: timestamp('created_at').defaultNow(),
     deletedAt: timestamp('deleted_at'),
+}, (table) => {
+    return {
+        createdAtIdx: index('orders_created_at_idx').on(table.createdAt),
+        statusIdx: index('orders_status_idx').on(table.status),
+        phoneIdx: index('orders_phone_idx').on(table.customerPhone),
+    };
 });
 
 export const orderItems = pgTable('order_items', {
@@ -81,6 +106,10 @@ export const orderItems = pgTable('order_items', {
     total: numeric('total', { precision: 10, scale: 2 }).notNull(),
     notes: text('notes'),
     options: json('options'),
+}, (table) => {
+    return {
+        orderIdIdx: index('order_items_order_id_idx').on(table.orderId),
+    };
 });
 
 export const sales = pgTable('sales', {
@@ -92,6 +121,12 @@ export const sales = pgTable('sales', {
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
     deletedAt: timestamp('deleted_at'),
     userId: integer('user_id').references(() => users.id), // Added for user tracking
+}, (table) => {
+    return {
+        createdAtIdx: index('sales_created_at_idx').on(table.createdAt),
+        paymentMethodIdx: index('sales_payment_method_idx').on(table.paymentMethod),
+        customerPhoneIdx: index('sales_customer_phone_idx').on(table.customerPhone),
+    };
 });
 
 export const saleItems = pgTable('sale_items', {
@@ -101,6 +136,11 @@ export const saleItems = pgTable('sale_items', {
     quantity: numeric('quantity', { precision: 10, scale: 2 }).notNull(),
     unitPrice: numeric('unit_price', { precision: 10, scale: 2 }).notNull(),
     total: numeric('total', { precision: 10, scale: 2 }).notNull(),
+}, (table) => {
+    return {
+        saleIdIdx: index('sale_items_sale_id_idx').on(table.saleId),
+        productNameIdx: index('sale_items_product_name_idx').on(table.productName),
+    };
 });
 
 export const inventoryUsage = pgTable('inventory_usage', {
@@ -111,6 +151,12 @@ export const inventoryUsage = pgTable('inventory_usage', {
     quantity: numeric('quantity', { precision: 10, scale: 2 }).notNull(),
     unit: text('unit').notNull(),
     createdAt: timestamp('created_at').defaultNow(),
+}, (table) => {
+    return {
+        saleIdIdx: index('inv_usage_sale_id_idx').on(table.saleId),
+        orderIdIdx: index('inv_usage_order_id_idx').on(table.orderId),
+        productNameIdx: index('inv_usage_product_name_idx').on(table.productName),
+    };
 });
 
 
@@ -141,6 +187,10 @@ export const menuItems = pgTable('menu_items', {
     createdAt: timestamp('created_at').defaultNow(),
     updatedAt: timestamp('updated_at').defaultNow(),
     deletedAt: timestamp('deleted_at'),
+}, (table) => {
+    return {
+        recipeIdIdx: index('menu_items_recipe_id_idx').on(table.recipeId),
+    };
 });
 
 export const customers = pgTable('customers', {
@@ -162,4 +212,10 @@ export const cxc = pgTable('cxc', {
     updatedAt: timestamp('updated_at').defaultNow(),
     paidAt: timestamp('paid_at'),
     userId: integer('user_id').references(() => users.id), // Added for user tracking
+}, (table) => {
+    return {
+        statusIdx: index('cxc_status_idx').on(table.status),
+        customerPhoneIdx: index('cxc_customer_phone_idx').on(table.customerPhone),
+        saleIdIdx: index('cxc_sale_id_idx').on(table.saleId),
+    };
 });

@@ -239,7 +239,7 @@ const totalFilteredAmount = computed(() => {
     background: white;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    overflow: hidden;
+    overflow-x: auto; /* Allow horizontal scroll */
     border: 1px solid var(--border-color);
 }
 
@@ -252,6 +252,7 @@ const totalFilteredAmount = computed(() => {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #f1f5f9;
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .data-table th {
@@ -288,7 +289,10 @@ const totalFilteredAmount = computed(() => {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap; 
 }
+
+
 
 .search-group {
     position: relative;
@@ -378,12 +382,11 @@ const totalFilteredAmount = computed(() => {
 }
 
 .action-btn-text {
-  background: white;
+  background: var(--color-primary);
   padding: 0.5rem 1rem;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
+  color: white;
+  border: none;
   border-radius: var(--radius-md);
-  transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -393,9 +396,17 @@ const totalFilteredAmount = computed(() => {
 }
 
 .action-btn-text:hover {
-  background-color: var(--bg-app);
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  /* No changes on hover as requested */
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+    .action-btn-text span {
+        display: none;
+    }
+    .action-btn-text {
+        padding: 0.6rem;
+    }
 }
 
 .empty-row {
@@ -408,5 +419,39 @@ const totalFilteredAmount = computed(() => {
     text-align: center;
     padding: 3rem;
     color: #94a3b8;
+}
+
+@media (max-width: 640px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-group {
+        width: 100% !important;
+    }
+    .toolbar-total {
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Align children horizontally */
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem; /* More space */
+    }
+    .total-info {
+        border-right: none !important;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+        flex-direction: row !important; /* Label and amount in same line */
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .total-label {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    .total-amount {
+        font-size: 1.1rem;
+        line-height: 1;
+    }
 }
 </style>

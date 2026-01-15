@@ -6,7 +6,7 @@ import cors from 'cors';
 
 import { db } from './src/db/index.js';
 import { tickets, ticketItems, fixedExpenses, recipes, recipeIngredients, orders, orderItems, sales, saleItems, users, menuItems, customers, cxc, inventoryUsage } from './src/db/schema.js';
-import { eq, and, or, like, gte, lte, asc, desc, isNull, sql, between } from 'drizzle-orm';
+import { eq, and, or, like, gte, lte, asc, desc, isNull, sql, between, inArray } from 'drizzle-orm';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -16,6 +16,18 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+import fs from 'fs';
+
+// Helper to log key events/errors to file
+const logToFile = (message) => {
+    try {
+        const timestamp = new Date().toISOString();
+        fs.appendFileSync('server_debug.log', `[${timestamp}] ${message}\n`);
+    } catch (e) {
+        console.error('Failed to write to log file:', e);
+    }
+};
 
 // Helper to get CDMX Date Range from YYYY-MM-DD (Adjusted for UTC-6)
 const getCDMXRange = (from, to) => {
@@ -164,13 +176,21 @@ app.get('/api/sales', verifyToken, async (req, res) => {
             .where(and(...conditions))
             .orderBy(desc(sales.createdAt));
 
-        const salesWithItems = await Promise.all(salesResult.map(async (sale) => {
-            const items = await db.select().from(saleItems).where(eq(saleItems.saleId, sale.id));
+        // Optimized: Fetch all items for these sales in one query
+        const saleIds = salesResult.map(s => s.id);
+        let allItems = [];
+
+        if (saleIds.length > 0) {
+            allItems = await db.select().from(saleItems).where(inArray(saleItems.saleId, saleIds));
+        }
+
+        const salesWithItems = salesResult.map(sale => {
+            const items = allItems.filter(i => i.saleId === sale.id);
             return {
                 ...sale,
                 items
             };
-        }));
+        });
 
         res.json(salesWithItems);
     } catch (error) {
@@ -766,10 +786,19 @@ app.get('/api/dashboard/weekly-stats', verifyToken, async (req, res) => {
 app.get('/api/orders', async (req, res) => {
     try {
         const result = await db.select().from(orders).where(isNull(orders.deletedAt)).orderBy(asc(orders.deliveryTime));
-        const ordersWithItems = await Promise.all(result.map(async (order) => {
-            const items = await db.select().from(orderItems).where(eq(orderItems.orderId, order.id));
+
+        // Optimized: Fetch all items for these orders in one query
+        const orderIds = result.map(o => o.id);
+        let allItems = [];
+
+        if (orderIds.length > 0) {
+            allItems = await db.select().from(orderItems).where(inArray(orderItems.orderId, orderIds));
+        }
+
+        const ordersWithItems = result.map(order => {
+            const items = allItems.filter(i => i.orderId === order.id);
             return { ...order, items };
-        }));
+        });
         res.json(ordersWithItems);
     } catch (error) {
         console.error(error);
@@ -883,8 +912,27 @@ app.patch('/api/orders/:id/status', verifyToken, async (req, res) => {
 app.get('/api/customers', verifyToken, async (req, res) => {
     try {
         const allCustomers = await db.select().from(customers);
-        const allOrders = await db.select().from(orders);
-        const allCXC = await db.select().from(cxc);
+
+        // Optimized: Select only needed columns
+        const allOrders = await db.select({
+            customerName: orders.customerName,
+            customerPhone: orders.customerPhone,
+            createdAt: orders.createdAt
+        }).from(orders);
+
+        const allCXC = await db.select({
+            customerName: cxc.customerName,
+            customerPhone: cxc.customerPhone,
+            amount: cxc.amount,
+            status: cxc.status
+        }).from(cxc);
+
+        // Optimized: Select only needed columns for Sales
+        const allSales = await db.select({
+            customerName: sales.customerName,
+            customerPhone: sales.customerPhone,
+            createdAt: sales.createdAt
+        }).from(sales).where(isNull(sales.deletedAt));
 
         // Fetch Items from Orders (Online/App)
         const orderItemsData = await db.select({
@@ -894,21 +942,17 @@ app.get('/api/customers', verifyToken, async (req, res) => {
             .from(orderItems)
             .innerJoin(orders, eq(orders.id, orderItems.orderId));
 
-        // Fetch Items from CXC (Credit Sales)
-        const cxcItemsData = await db.select({
-            phone: cxc.customerPhone,
+        // Fetch Items from Sales (Includes CXC and Generic POS Sales)
+        // using innerJoin to ensure we only get items for valid active sales
+        const saleItemsData = await db.select({
+            phone: sales.customerPhone,
             product: saleItems.productName
         })
             .from(saleItems)
-            .innerJoin(cxc, eq(cxc.saleId, saleItems.saleId));
+            .innerJoin(sales, eq(sales.id, saleItems.saleId));
 
-        logToFile(`[GET /api/customers] CXC Items Found: ${cxcItemsData.length}`);
-        if (cxcItemsData.length > 0) {
-            logToFile(`[GET /api/customers] Sample CXC Item: ${JSON.stringify(cxcItemsData[0])}`);
-        }
-
-        // Combine all items
-        const allItems = [...orderItemsData, ...cxcItemsData];
+        // Combine all items for "Favorite" calc
+        const allItems = [...orderItemsData, ...saleItemsData];
 
         // Aggregate Data
         const stats = {};
@@ -927,19 +971,25 @@ app.get('/api/customers', verifyToken, async (req, res) => {
             stats[p].orders += 1;
             const d = new Date(order.createdAt);
             if (!stats[p].lastOrder || d > stats[p].lastOrder) stats[p].lastOrder = d;
+            // Update name preference if available
+            if (order.customerName) stats[p].name = order.customerName;
         }
 
-        // 2. Process CXC (Credits - these are also "Orders")
-        for (const cxcRecord of allCXC) {
-            if (!cxcRecord.customerPhone) continue;
-            const p = normalizePhone(cxcRecord.customerPhone);
+        // 2. Process Sales (Main Source of Truth: POS + CXC + Etc)
+        // This iteration covers ALL financial transactions.
+        for (const sale of allSales) {
+            if (!sale.customerPhone) continue;
+            const p = normalizePhone(sale.customerPhone);
             if (!p) continue;
 
-            if (!stats[p]) stats[p] = { orders: 0, lastOrder: null, items: {} };
+            if (!stats[p]) stats[p] = { orders: 0, lastOrder: null, items: {}, name: sale.customerName };
 
             stats[p].orders += 1;
-            const d = new Date(cxcRecord.createdAt);
+
+            // Fix: sale.createdAt might be a string or Date depending on driver. Drizzle returns Date usually.
+            const d = new Date(sale.createdAt);
             if (!stats[p].lastOrder || d > stats[p].lastOrder) stats[p].lastOrder = d;
+            if (sale.customerName) stats[p].name = sale.customerName;
         }
 
         // Process Items (for favorites - Orders + CXC)
@@ -985,10 +1035,70 @@ app.get('/api/customers', verifyToken, async (req, res) => {
             };
         });
 
-        res.json(enriched);
+        // 3. (NEW) Find "Ghost" Customers - Customers who have sales/orders but are NOT in the `customers` table
+        // This fixes the "empty table" issue if customers were created ad-hoc in sales but not saved to the profile table
+        const registeredPhones = new Set(allCustomers.map(c => normalizePhone(c.phone)));
+        const ghostCustomers = [];
+
+        for (const [phone, stat] of Object.entries(stats)) {
+            if (!phone || registeredPhones.has(phone)) continue;
+
+            // Found a phone with history but no profile!
+            // Let's create a temporary profile object for the view
+
+            // Try to find a name from recent orders/sales
+            const recentOrder = allOrders.find(o => normalizePhone(o.customerPhone) === phone);
+            const recentCXC = allCXC.find(c => normalizePhone(c.customerPhone) === phone);
+            // Also check generic sales if we fetched them (we didn't yet, but we have orders/cxc)
+
+            const ghostName = recentOrder?.customerName || recentCXC?.customerName || 'Cliente Desconocido';
+            const recentDate = stat.lastOrder || new Date();
+
+            // Check for pending debts for ghost
+            const customerDebts = allCXC.filter(d => normalizePhone(d.customerPhone) === phone && d.status === 'Pending');
+            const hasPendingDebt = customerDebts.length > 0;
+            const accountStatus = hasPendingDebt ? 'Abierta' : 'Cerrada';
+            const totalDebt = customerDebts.reduce((sum, d) => sum + parseFloat(d.amount), 0);
+
+            // Calculate Favorite for ghost
+            let fav = 'N/A';
+            let max = 0;
+            for (const [name, qty] of Object.entries(stat.items)) {
+                if (qty > max) {
+                    max = qty;
+                    fav = name;
+                }
+            }
+
+            ghostCustomers.push({
+                id: `ghost-${phone}`, // Temp ID
+                name: ghostName,
+                phone: phone,
+                email: '',
+                address: '',
+                notes: 'Generado automáticamente del historial',
+                totalOrders: stat.orders,
+                lastOrderDate: recentDate,
+                favoriteItem: fav,
+                accountStatus,
+                totalDebt,
+                createdAt: recentDate // approx
+            });
+        }
+
+        // Combine registered + ghost customers
+        const finalResult = [...enriched, ...ghostCustomers];
+
+        // Sort by last order date descending by default
+        finalResult.sort((a, b) => new Date(b.lastOrderDate) - new Date(a.lastOrderDate));
+
+        res.json(finalResult);
+
+
 
     } catch (error) {
         console.error(error);
+        logToFile(`[GET /api/customers] ERROR: ${error.message}\n${error.stack}`);
         res.status(500).json({ error: 'Failed to fetch customers' });
     }
 });
@@ -1602,25 +1712,29 @@ app.get('/api/menu-items', async (req, res) => {
         // Option B: Just return recipeId and let frontend fetch recipe details or common store.
         // Let's do Option A for completeness / robustness for the list view 'Real Cost' column.
 
-        const detailedResult = await Promise.all(result.map(async (item) => {
-            let realCost = 0;
-            if (item.recipeId) {
-                const ingredients = await db.select().from(recipeIngredients).where(eq(recipeIngredients.recipeId, item.recipeId));
-                // We need unit prices from inventory (ticketItems AVG)
-                // This logic is duplicated from RecipeForm. ideally should be a helper.
-                // For now, let's keep it simple: Frontend calculates cost? 
-                // Creating a helper function inside server for cost calc is better but out of scope for quick refactor.
-                // Let's fetch ingredients and let frontend calculate or do a quick calc here if possible.
-                // Optimization: Fetch inventory once.
+        const { details } = req.query;
 
-                // Let's just return the ingredients and their quantities. frontend has the inventory prices context usually.
-                // Actually, backend calculation is safer.
-                // Let's defer cost calculation to a specialized endpoint or just return recipeId and handle logic on front for now to match current architecture.
-                // "MenuListView" previously calculated it from ingredients.
-                return { ...item, ingredients };
+        // If 'details' is not requested, return the main result immediately (Fast for POS)
+        if (details !== 'true') {
+            return res.json(result);
+        }
+
+        // Only fetch ingredients/details if explicitly requested (Slow for Admin List)
+        // Optimized: Fetch all relevant ingredients in one query instead of map/loop
+        const recipeIds = result.map(i => i.recipeId).filter(id => id);
+        let allIngredients = [];
+
+        if (recipeIds.length > 0) {
+            allIngredients = await db.select().from(recipeIngredients).where(inArray(recipeIngredients.recipeId, recipeIds));
+        }
+
+        const detailedResult = result.map(item => {
+            if (item.recipeId) {
+                const itemIngredients = allIngredients.filter(ing => ing.recipeId === item.recipeId);
+                return { ...item, ingredients: itemIngredients };
             }
             return { ...item, ingredients: [] };
-        }));
+        });
 
         res.json(detailedResult);
     } catch (error) {
