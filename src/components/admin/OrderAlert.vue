@@ -23,6 +23,9 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { authFetch } from '../../utils/authFetch';
+import { useNotificationStore } from '../../stores/notifications';
+
+const store = useNotificationStore();
 
 const router = useRouter();
 const lastOrderId = ref(null);
@@ -63,11 +66,13 @@ const checkNewOrders = async () => {
 
         let message = `Orden #${currentId} recibida.`;
         if (newTotal > 1) {
-            message = `Orden #${currentId} y ${newTotal - 1} más recibidas.`;
+            message = `Tienes +${newTotal} órdenes por atender`;
+        } else {
+             message = `Orden #${currentId} recibida.`;
         }
 
         store.upsertNotification({
-            title: '¡Nuevos Pedidos!',
+            title: '¡Pedidos Nuevos!',
             message: message,
             type: 'info',
             detailsRoute: '/pos/orders',
