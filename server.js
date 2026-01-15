@@ -1,4 +1,6 @@
 
+process.env.TZ = 'America/Mexico_City';
+
 import express from 'express';
 import cors from 'cors';
 

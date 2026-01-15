@@ -239,9 +239,9 @@ const handleSmartList = () => {
         </div>
 
         <!-- Pagination -->
-        <div class="pagination" v-if="filteredInventory.length > 0">
+        <div class="pagination" v-if="sortedInventory.length > 0">
         <span class="page-info">
-            Mostrando {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, filteredInventory.length) }} de {{ filteredInventory.length }} productos
+            Mostrando {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, sortedInventory.length) }} de {{ sortedInventory.length }} productos
         </span>
         <div class="pagination-controls">
             <button 
