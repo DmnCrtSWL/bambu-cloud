@@ -83,15 +83,7 @@ const verifyToken = async (req, res, next) => {
 
 
 // DEBUG LOGGER
-const logToFile = (msg) => {
-    const timestamp = new Date().toISOString();
-    const logLine = `[${timestamp}] ${msg}\n`;
-    try {
-        fs.appendFileSync('server-debug.txt', logLine);
-    } catch (e) {
-        console.error('Failed to write to log file', e);
-    }
-};
+
 
 
 // Export app for Serverless
@@ -158,7 +150,6 @@ app.get('/api/sales', verifyToken, async (req, res) => {
 // GET /api/tickets - List all tickets with optional date filtering (PROTECTED)
 app.get('/api/tickets', verifyToken, async (req, res) => {
     try {
-        logToFile(`[GET /api/tickets] Query: ${JSON.stringify(req.query)}`);
         console.log('[GET /api/tickets] Incoming Query:', req.query);
         const { today, from, to, undissected } = req.query;
         let conditions = [isNull(tickets.deletedAt)];
@@ -248,8 +239,8 @@ app.post('/api/tickets', verifyToken, async (req, res) => {
         console.error('[POST /api/tickets] Error:', error);
         
         // Quick debug logging to file
-        const fs = await import('fs');
-        fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] POST /api/tickets ERROR: ${error.message}\n${error.stack}\n\n`);
+        // const fs = await import('fs');
+        // fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] POST /api/tickets ERROR: ${error.message}\n${error.stack}\n\n`);
 
         res.status(500).json({ error: `Failed to create ticket: ${error.message}` });
     }
@@ -305,8 +296,8 @@ app.put('/api/tickets/:id', verifyToken, async (req, res) => {
         console.error('[PUT /api/tickets/:id] Error:', error);
 
         // Quick debug logging to file
-        const fs = await import('fs');
-        fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] PUT /api/tickets/${req.params.id} ERROR: ${error.message}\n${error.stack}\n\n`);
+        // const fs = await import('fs');
+        // fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] PUT /api/tickets/${req.params.id} ERROR: ${error.message}\n${error.stack}\n\n`);
 
         res.status(500).json({ error: `Failed to update ticket: ${error.message}` });
     }
@@ -360,8 +351,8 @@ app.post('/api/tickets/:id/breakdown', verifyToken, async (req, res) => {
         console.error('[POST /api/tickets/:id/breakdown] Error:', error);
 
         // Quick debug logging to file
-        const fs = await import('fs');
-        fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] POST /api/tickets/${req.params.id}/breakdown ERROR: ${error.message}\n${error.stack}\n\n`);
+        // const fs = await import('fs');
+        // fs.appendFileSync('server_error.log', `[${new Date().toISOString()}] POST /api/tickets/${req.params.id}/breakdown ERROR: ${error.message}\n${error.stack}\n\n`);
 
         res.status(500).json({ error: `Failed to save breakdown: ${error.message}` });
     }
