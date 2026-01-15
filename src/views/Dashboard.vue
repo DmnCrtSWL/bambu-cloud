@@ -17,7 +17,8 @@ const stats = ref({
     summary: { totalSales: 0, totalOrders: 0, goal: 5500, totalCXC: 0 },
     comparison: { current: 0, previous: 0, diff: 0 },
     topProducts: [],
-    topCustomers: []
+    topCustomers: [],
+    topDebtors: []
 });
 
 // Filters
@@ -52,12 +53,13 @@ const fetchDashboardData = async () => {
         params.append('to', to);
 
         // Replace the single fetch with multiple fetches using Promise.all
-        const [summaryRes, comparisonRes, topProductsRes, topCustomersRes, weeklyStatsRes] = await Promise.all([
+        const [summaryRes, comparisonRes, topProductsRes, topCustomersRes, weeklyStatsRes, topDebtorsRes] = await Promise.all([
             authFetch(`/api/dashboard/summary?${params}`).then(r => r.json()),
             authFetch(`/api/dashboard/comparison?${params}`).then(r => r.json()),
             authFetch(`/api/dashboard/top-products?${params}`).then(r => r.json()),
             authFetch(`/api/dashboard/top-customers?${params}`).then(r => r.json()),
-            authFetch(`/api/dashboard/weekly-stats?${params}`).then(r => r.json())
+            authFetch(`/api/dashboard/weekly-stats?${params}`).then(r => r.json()),
+            authFetch(`/api/dashboard/top-debtors?${params}`).then(r => r.json()).catch(() => [])
         ]);
 
         // Update the stats ref with the results from multiple fetches
@@ -66,7 +68,8 @@ const fetchDashboardData = async () => {
             comparison: comparisonRes,
             topProducts: topProductsRes,
             topCustomers: topCustomersRes,
-            weeklyStats: weeklyStatsRes
+            weeklyStats: weeklyStatsRes,
+            topDebtors: topDebtorsRes
         };
 
     } catch (error) {
@@ -158,7 +161,7 @@ const formatCurrency = (val) => new Intl.NumberFormat('es-MX', { style: 'currenc
       <div class="stat-card info-card">
         <div class="icon-box"><ShoppingBag size="24" /></div>
         <div class="stat-content">
-            <span class="stat-label">Ordenes</span>
+            <span class="stat-label">Órdenes</span>
             <span class="stat-value">{{ stats.summary.totalOrders }}</span>
         </div>
       </div>
@@ -220,34 +223,30 @@ const formatCurrency = (val) => new Intl.NumberFormat('es-MX', { style: 'currenc
                 <div v-else class="empty-state">Sin datos de clientes</div>
             </div>
 
-            <!-- 2. Weekly Comparison Table -->
+            <!-- 2. Top Debtors (CXC) -->
             <div class="card compare-card">
-                <h3 class="card-title">Comparativa Semanal</h3>
-                <table class="simple-table">
-                    <thead>
-                        <tr>
-                            <th>Periodo</th>
-                            <th>Ventas</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Esta Semana</td>
-                            <td class="font-bold">{{ formatCurrency(stats.weeklyStats?.thisWeek || 0) }}</td>
-                            <td rowspan="2" class="change-cell">
-                                <div class="badge" :class="(stats.weeklyStats?.diff || 0) >= 0 ? 'badge-up' : 'badge-down'">
-                                    <component :is="(stats.weeklyStats?.diff || 0) >= 0 ? ArrowUpRight : ArrowDownRight" size="16" />
-                                    {{ formatCurrency(Math.abs(stats.weeklyStats?.diff || 0)) }}
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="muted-row">
-                            <td>Semana Pasada</td>
-                            <td>{{ formatCurrency(stats.weeklyStats?.lastWeek || 0) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3 class="card-title">Top Deudores (CXC)</h3>
+                <div class="table-container">
+                    <table class="simple-table">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th style="text-align: right;">Adeudo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(debtor, i) in stats.topDebtors" :key="i">
+                                <td class="font-bold" style="color: var(--text-main);">{{ debtor.name }}</td>
+                                <td style="text-align: right; color: #DC2626; font-weight: 700;">
+                                    {{ formatCurrency(Number(debtor.totalDebt)) }}
+                                </td>
+                            </tr>
+                            <tr v-if="!stats.topDebtors || stats.topDebtors.length === 0" class="muted-row">
+                                <td colspan="2" style="text-align: center; padding: 2rem;">Todo al corriente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- 3. Top Selling Products -->

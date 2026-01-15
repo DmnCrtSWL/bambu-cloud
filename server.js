@@ -868,6 +868,25 @@ app.get('/api/dashboard/weekly-stats', verifyToken, async (req, res) => {
     }
 });
 
+app.get('/api/dashboard/top-debtors', verifyToken, async (req, res) => {
+    try {
+        const result = await db.select({
+            name: cxc.customerName,
+            totalDebt: sql`sum(${cxc.amount})`
+        })
+            .from(cxc)
+            .where(eq(cxc.status, 'Pending'))
+            .groupBy(cxc.customerName)
+            .orderBy(desc(sql`sum(${cxc.amount})`))
+            .limit(10);
+
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json([]);
+    }
+});
+
 
 // --- ORDERS ENDPOINTS ---
 
