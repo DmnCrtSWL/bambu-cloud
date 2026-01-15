@@ -111,29 +111,36 @@ const handleSmartList = () => {
     
     <!-- Print Only Section -->
     <div class="print-only">
-        <div class="print-header">
-            <h1>Inventario del día: {{ new Date().toLocaleDateString('es-MX') }}</h1>
-        </div>
-
-        <div class="print-grid">
-            <!-- Headers only appear once at the start of the flow for simplicity, or we rely on page breaks. 
-                 For a simple 2-column flow, a visual header row per column is hard without JS split. 
-                 We will use a list flow. -->
-            <div class="print-row header-row">
-                <div class="col-name">Artículo</div>
-                <div class="col-date">Última Compra</div>
-                <div class="col-sys">Sist.</div>
-                <div class="col-real">Real</div>
+        <!-- Header Grid -->
+        <div class="print-header-grid">
+            <div class="ph-col-3 left-align">
+                 <img src="/logo-bambu.png" alt="Logo" class="print-logo" />
             </div>
-            
-            <div v-for="item in inventory" :key="item.product" class="print-row item-row">
-                <div class="col-name">
-                    <span class="p-name">{{ item.product }}</span>
-                    <span class="p-type">{{ item.type }}</span>
+            <div class="ph-col-6 center-align">
+                <h1 class="print-title">Inventario</h1>
+            </div>
+            <div class="ph-col-3 right-align">
+                <span class="print-date">{{ new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}</span>
+            </div>
+        </div>
+        
+        <hr class="print-hr" />
+
+        <!-- List Content (2 Columns Flow) -->
+        <div class="print-content-flow">
+            <!-- Items Loop -->
+             <div v-for="item in inventory" :key="item.product" class="print-item-row">
+                <div class="pi-info">
+                    <span class="pi-name">{{ item.product }}</span>
+                    <span class="pi-meta">{{ item.type }} | Últ. Compra: {{ formatDate(item.lastPurchaseDate) }}</span>
                 </div>
-                <div class="col-date">{{ formatDate(item.lastPurchaseDate) }}</div>
-                <div class="col-sys">{{ Number(item.totalQuantity).toLocaleString() }} {{ item.unit }}</div>
-                <div class="col-real"><div class="write-box"></div></div>
+                <div class="pi-stock">
+                    <span class="pi-val">{{ Number(item.totalQuantity).toLocaleString() }}</span>
+                    <span class="pi-unit">{{ item.unit }}</span>
+                </div>
+                <div class="pi-manual">
+                    <div class="manual-box"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -520,7 +527,7 @@ const handleSmartList = () => {
     /* Globally Hide Sidebar, Header, etc. */
     :global(.sidebar), 
     :global(.topbar),
-    :global(.admin-layout > .main-content > header), /* Fallback */
+    :global(.admin-layout > .main-content > header),
     .screen-only {
         display: none !important;
     }
@@ -536,86 +543,118 @@ const handleSmartList = () => {
         padding: 0 !important;
     }
 
-    /* Document Setup */
-    @page {
-        margin: 0.8cm;
-        size: letter;
-    }
-
     body {
         margin: 0 !important;
         padding: 0 !important;
         background: white !important;
-        font-family: Arial, sans-serif !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    
-    .inventory-view {
-        padding: 0 !important;
-    }
 
-    /* Print Layout */
+    @page { size: letter; margin: 1cm; }
+
+    /* Layout Structure */
     .print-only {
         display: block !important;
         width: 100%;
+        font-family: 'Nunito', sans-serif !important;
     }
 
-    .print-header {
-        text-align: center;
-        margin-bottom: 1rem;
-        column-span: all; /* Spans across columns if inside grid */
-    }
-
-    .print-header h1 {
-        font-size: 18px !important;
-        color: black !important;
-        margin: 0;
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-
-    /* Multi-column Grid */
-    .print-grid {
-        column-count: 2;
-        column-gap: 1.5rem;
-        width: 100%;
-        font-size: 12px;
-    }
-
-    /* Row Styling */
-    .print-row {
+    /* Header Grid (12 Columns Concept) */
+    .print-header-grid {
         display: flex;
         align-items: center;
-        border-bottom: 1px solid #ccc;
-        padding: 4px 0;
-        break-inside: avoid; /* Prevent splitting rows */
-        page-break-inside: avoid;
-    }
-
-    .header-row {
-        font-weight: bold;
-        border-bottom: 2px solid black;
-        margin-bottom: 4px;
-        /* Sticky doesn't work well in columns, usually. 
-           This will appear at start of Col 1. */
-    }
-
-    /* Columns Widths */
-    .col-name { flex: 2; padding-right: 5px; overflow: hidden; }
-    .col-date { width: 70px; text-align: right; }
-    .col-sys { width: 50px; text-align: center; }
-    .col-real { width: 60px; padding-left: 5px; }
-
-    .p-name { display: block; font-weight: 600; line-height: 1.1; }
-    .p-type { display: block; font-size: 10px; color: #555; font-style: italic; }
-
-    /* Box for Existencia Real */
-    .write-box {
-        border: 1px solid #000 !important;
-        height: 18px; 
-        background-color: white !important;
         width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .ph-col-3 { width: 25%; }
+    .ph-col-6 { width: 50%; }
+    
+    .left-align { text-align: left; }
+    .center-align { text-align: center; }
+    .right-align { text-align: right; }
+
+    .print-logo {
+        height: 50px;
+        width: auto;
+    }
+
+    .print-title {
+        font-size: 24px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin: 0;
+        color: black;
+    }
+
+    .print-date {
+        font-size: 14px;
+        color: #444;
+        text-transform: capitalize;
+    }
+
+    .print-hr {
+        border: none;
+        border-top: 2px solid black;
+        margin: 0.5rem 0 1rem 0;
+    }
+
+    /* Content Flow (2 Columns) */
+    .print-content-flow {
+        column-count: 2;
+        column-gap: 2rem;
+        widows: 2;
+        orphans: 2;
+    }
+    
+    .print-item-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.4rem 0;
+        border-bottom: 1px dashed #ccc;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        font-size: 14px; /* Requested 14px */
+    }
+
+    .pi-info {
+        flex: 1;
+        padding-right: 0.5rem;
+    }
+
+    .pi-name {
+        display: block;
+        font-weight: 700;
+        color: black;
+    }
+
+    .pi-meta {
+        display: block;
+        font-size: 12px; /* Smaller meta info */
+        color: #555;
+    }
+
+    .pi-stock {
+        text-align: right;
+        min-width: 60px;
+        margin-right: 1rem;
+    }
+
+    .pi-val { font-weight: 700; font-size: 14px; }
+    .pi-unit { font-size: 12px; color: #666; margin-left: 2px; }
+
+    /* Manual Box */
+    .pi-manual {
+        width: 60px;
+    }
+
+    .manual-box {
+        width: 100%;
+        height: 24px;
+        border: 1px solid black;
+        background: white;
     }
 }
 
